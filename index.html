@@ -6,13 +6,73 @@
   <title>LANZVILLE INVESTMENTS ANSTALT</title>
   <link rel="icon" href="https://i.postimg.cc/MGrtBnXp/IMG-6148.png" type="image/png">
   <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     body {
       font-family: 'Helvetica Neue', sans-serif;
       background-color: #000;
       color: #e5e5e5;
-      margin: 0;
-      padding: 0;
+      overflow-x: hidden;
     }
+
+    /* Intro Splash */
+    #intro {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: #000;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+      transition: opacity 1s ease;
+    }
+
+    #intro img {
+      width: 150px;
+      height: auto;
+      margin-bottom: 2rem;
+      animation: fadeIn 2s ease forwards;
+    }
+
+    #enter-btn {
+      background: none;
+      border: 2px solid #d4af37;
+      color: #d4af37;
+      padding: 0.8rem 2rem;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s ease, color 0.3s ease;
+      animation: fadeIn 2s ease forwards;
+    }
+
+    #enter-btn:hover {
+      background: #d4af37;
+      color: #000;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Main Content */
+    #main-content {
+      display: none;
+      animation: fadeInMain 1s ease forwards;
+    }
+
+    @keyframes fadeInMain {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
     header {
       display: flex;
       justify-content: space-between;
@@ -20,15 +80,18 @@
       background: #111;
       padding: 1rem 2rem;
     }
-    header img {
-      height: 50px;
-      margin-right: 10px;
-    }
+
     header h1 {
       font-size: 1.5rem;
       color: #d4af37;
       margin: 0;
     }
+
+    header img {
+      height: 50px;
+      margin-right: 10px;
+    }
+
     nav a {
       color: #e5e5e5;
       margin-left: 1rem;
@@ -36,12 +99,15 @@
       cursor: pointer;
       transition: color 0.3s ease;
     }
+
     nav a:hover {
       color: #d4af37;
     }
+
     .lang-switch {
       margin-left: 1rem;
     }
+
     .lang-switch button {
       background: transparent;
       border: 1px solid #555;
@@ -51,31 +117,38 @@
       margin-left: 5px;
       transition: border 0.3s ease, color 0.3s ease;
     }
+
     .lang-switch button:hover {
       border-color: #d4af37;
       color: #d4af37;
     }
+
     .section {
       padding: 2rem;
       display: none;
     }
+
     .section.active {
       display: block;
     }
+
     .team-member {
       border-bottom: 1px solid #333;
       padding: 1rem 0;
     }
+
     .team-member h3 {
       color: #d4af37;
       margin: 0 0 0.3rem;
     }
+
     .team-member a {
       color: #d4af37;
       text-decoration: none;
       display: inline-block;
       margin-top: 0.5rem;
     }
+
     footer {
       text-align: center;
       padding: 1rem;
@@ -84,32 +157,34 @@
       font-size: 0.9rem;
       margin-top: 2rem;
     }
-    /* Portfolio styling */
+
     .portfolio-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 2rem;
       margin-top: 2rem;
     }
+
     .portfolio-item {
       border: 1px solid #333;
       padding: 1.5rem;
       background: #111;
       transition: transform 0.3s ease, border-color 0.3s ease;
     }
+
     .portfolio-item:hover {
       transform: translateY(-8px) scale(1.02);
       border-color: #d4af37;
     }
+
     .portfolio-item h3 {
       color: #d4af37;
       margin-top: 0;
     }
 
-    /* Contact Button Above Footer */
     .contact-btn {
       display: inline-block;
-      margin: 1rem auto 0 auto;
+      margin: 2rem auto;
       padding: 0.5rem 1.2rem;
       background: #d4af37;
       color: #000;
@@ -124,173 +199,137 @@
       display: block;
       width: max-content;
     }
+
     .contact-btn:hover {
       background: #b8952f;
+    }
+
+    @media (max-width: 600px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav {
+        margin-top: 1rem;
+      }
     }
   </style>
 </head>
 <body>
 
-<header>
-  <div style="display: flex; align-items: center;">
-    <img src="https://i.postimg.cc/MGrtBnXp/IMG-6148.png" alt="Logo">
-    <h1>LANZVILLE INVESTMENTS ANSTALT</h1>
-  </div>
-  <nav>
-    <a onclick="showSection('about')">About</a>
-    <a onclick="showSection('team')">Team</a>
-    <a onclick="showSection('portfolio')">Portfolio</a>
-    <div class="lang-switch">
-      <button onclick="setLang('en')">EN</button>
-      <button onclick="setLang('de')">DE</button>
+<!-- Intro -->
+<div id="intro">
+  <img src="https://i.postimg.cc/MGrtBnXp/IMG-6148.png" alt="Logo">
+  <button id="enter-btn">ENTER</button>
+</div>
+
+<!-- Main Content -->
+<div id="main-content">
+  <header>
+    <div style="display: flex; align-items: center;">
+      <img src="https://i.postimg.cc/MGrtBnXp/IMG-6148.png" alt="Logo">
+      <h1>LANZVILLE INVESTMENTS ANSTALT</h1>
     </div>
-  </nav>
-</header>
+    <nav>
+      <a onclick="showSection('about')">About</a>
+      <a onclick="showSection('team')">Team</a>
+      <a onclick="showSection('portfolio')">Portfolio</a>
+      <div class="lang-switch">
+        <button onclick="setLang('en')">EN</button>
+        <button onclick="setLang('de')">DE</button>
+      </div>
+    </nav>
+  </header>
 
-<section id="about" class="section active">
-  <div class="en">
-    <h2>About Us</h2>
-    <p>LANZVILLE INVESTMENTS ANSTALT is a private investment company based in Liechtenstein. Founded in 1990, we specialize in long-term value creation through private equity, real estate, crypto assets and bespoke financial solutions.</p>
-  </div>
-  <div class="de">
-    <h2>Über Uns</h2>
-    <p>LANZVILLE INVESTMENTS ANSTALT ist eine private Investmentgesellschaft mit Sitz in Liechtenstein. Gegründet im Jahr 1990, konzentrieren wir uns auf langfristige Wertschöpfung durch Private Equity, Immobilien, Krypto Assets und maßgeschneiderte Finanzlösungen.</p>
-  </div>
-</section>
+  <section id="about" class="section">
+    <div class="en">
+      <h2>About Us</h2>
+      <p>LANZVILLE INVESTMENTS ANSTALT is a private investment company based in Liechtenstein. Founded in 1990, we specialize in long-term value creation through private equity, real estate, crypto assets and bespoke financial solutions.</p>
+    </div>
+    <div class="de">
+      <h2>Über Uns</h2>
+      <p>LANZVILLE INVESTMENTS ANSTALT ist eine private Investmentgesellschaft mit Sitz in Liechtenstein. Gegründet im Jahr 1990, konzentrieren wir uns auf langfristige Wertschöpfung durch Private Equity, Immobilien, Krypto Assets und maßgeschneiderte Finanzlösungen.</p>
+    </div>
+  </section>
 
-<section id="team" class="section">
-  <h2 class="en">Our Team</h2>
-  <h2 class="de">Unser Team</h2>
+  <section id="team" class="section">
+    <h2 class="en">Our Team</h2>
+    <h2 class="de">Unser Team</h2>
 
-  <div class="team-member">
-    <h3>David Luksic Lederer – CEO</h3>
-    <p class="en">David has over 20 years of experience in global wealth management and leads the strategic direction of the firm.</p>
-    <p class="de">David verfügt über mehr als 20 Jahre Erfahrung im globalen Vermögensmanagement und leitet die strategische Ausrichtung des Unternehmens.</p>
-    <a href="mailto:David.Lederer@lanzvilleinvest.com">David.Lederer@lanzvilleinvest.com</a>
-  </div>
-
-  <div class="team-member">
-    <h3>Benedit Moos – Co-Founder</h3>
-    <p class="en">Benedit is a visionary entrepreneur who co-founded the company with a focus on alternative asset strategies.</p>
-    <p class="de">Benedit ist ein visionärer Unternehmer, der das Unternehmen mit dem Fokus auf alternative Anlageklassen mitbegründet hat.</p>
-    <a href="mailto:Benedit.Moos@lanzvilleinvest.com">Benedit.Moos@lanzvilleinvest.com</a>
-  </div>
-
-  <div class="team-member">
-    <h3>Nathan Alexandrè Gaila – CFO</h3>
-    <p class="en">Nathan oversees financial operations and ensures regulatory compliance across all jurisdictions.</p>
-    <p class="de">Nathan leitet die Finanzabteilung und stellt die Einhaltung gesetzlicher Vorschriften in allen Bereichen sicher.</p>
-    <a href="mailto:Nathan.Gaila@lanzvilleinvest.com">Nathan.Gaila@lanzvilleinvest.com</a>
-  </div>
-
-  <div class="team-member">
-    <h3>Sarah Schreiber – Lead Analyst</h3>
-    <p class="en">Sarah leads the research team and provides insights into global markets and trends.</p>
-    <p class="de">Sarah leitet das Forschungsteam und liefert Einblicke in globale Märkte und Trends.</p>
-    <a href="mailto:Sarah.Schreiber@lanzvilleinvest.com">Sarah.Schreiber@lanzvilleinvest.com</a>
-  </div>
-
-  <div class="team-member">
-    <h3>Raymond Hattori – Head of Alternative Investment</h3>
-    <p class="en">Raymond brings a wealth of expertise in crypto assets and innovative investment vehicles.</p>
-    <p class="de">Raymond verfügt über umfangreiche Erfahrung im Bereich Krypto Assets und innovativer Anlageprodukte.</p>
-    <a href="mailto:Raymond.Hattori@lanzvilleinvest.com">Raymond.Hattori@lanzvilleinvest.com</a>
-  </div>
-
-  <div class="team-member">
-    <h3>Alex Bonpensiero – Portfolio Manager</h3>
-    <p class="en">Alex manages multi-asset portfolios and implements tailored strategies for clients.</p>
-    <p class="de">Alex verwaltet Multi-Asset-Portfolios und entwickelt maßgeschneiderte Strategien für Kunden.</p>
-    <a href="mailto:Alex.Bonpensiero@lanzvilleinvest.com">Alex.Bonpensiero@lanzvilleinvest.com</a>
-  </div>
-
-  <div class="team-member">
-    <h3>Cedrick Antoine Vogt – Risk Management</h3>
-    <p class="en">Cedrick oversees risk protocols and ensures capital preservation across investment classes.</p>
-    <p class="de">Cedrick verantwortet das Risikomanagement und sorgt für Kapitalerhalt in allen Anlageklassen.</p>
-    <a href="mailto:Cedrick.Vogt@lanzvilleinvest.com">Cedrick.Vogt@lanzvilleinvest.com</a>
-  </div>
-
-  <div class="team-member">
-    <h3>Richard Wallace – Partner</h3>
-    <p class="en">Richard is a seasoned partner with decades of experience in private equity and global markets.</p>
-    <p class="de">Richard ist ein erfahrener Partner mit jahrzehntelanger Expertise in Private Equity und globalen Märkten.</p>
-    <a href="mailto:Richard.Wallace@lanzvilleinvest.com">Richard.Wallace@lanzvilleinvest.com</a>
-  </div>
-
-  <div class="team-member">
-    <h3>David Ruggenau – Investor Relations</h3>
-    <p class="en">David manages communication with investors and oversees relationship development.</p>
-    <p class="de">David verantwortet die Kommunikation mit Investoren und die Entwicklung langfristiger Beziehungen.</p>
-    <a href="mailto:David.Ruggenau@lanzvilleinvest.com">David.Ruggenau@lanzvilleinvest.com</a>
-  </div>
-</section>
-
-<section id="portfolio" class="section">
-  <h2 class="en">Our Portfolio</h2>
-  <h2 class="de">Unser Portfolio</h2>
-
-  <p class="en">
-    We invest with a long-term perspective across select industries and innovative assets.
-    Below is a glimpse into areas we focus on. For more details, we invite you to contact us directly.
-  </p>
-  <p class="de">
-    Wir investieren mit einem langfristigen Ansatz in ausgewählte Branchen und innovative Anlageklassen.
-    Nachfolgend ein Einblick in unsere Tätigkeitsfelder. Für weitere Informationen kontaktieren Sie uns bitte direkt.
-  </p>
-
-  <div class="portfolio-grid">
-    <div class="portfolio-item">
-      <h3>Private Equity</h3>
-      <p class="en">Growth capital for family businesses and niche sectors.</p>
-      <p class="de">Wachstumskapital für Familienunternehmen und Nischenbranchen.</p>
+    <div class="team-member">
+      <h3>David Luksic Lederer – CEO</h3>
+      <p class="en">David has over 20 years of experience in global wealth management and leads the strategic direction of the firm.</p>
+      <p class="de">David verfügt über mehr als 20 Jahre Erfahrung im globalen Vermögensmanagement und leitet die strategische Ausrichtung des Unternehmens.</p>
+      <a href="mailto:David.Lederer@lanzvilleinvest.com">David.Lederer@lanzvilleinvest.com</a>
     </div>
 
-    <div class="portfolio-item">
-      <h3>Real Estate</h3>
-      <p class="en">Selective holdings in prime European and global markets.</p>
-      <p class="de">Selektive Beteiligungen an erstklassigen Immobilien in Europa und weltweit.</p>
+    <div class="team-member">
+      <h3>André Peter Reisch – Finance</h3>
+      <p class="en">André oversees investment analysis and manages financial structuring of private placements and real estate deals.</p>
+      <p class="de">André ist für die Investmentanalyse und die finanzielle Strukturierung von Private Placements und Immobilienprojekten zuständig.</p>
+      <a href="mailto:Andre.Reisch@lanzvilleinvest.com">Andre.Reisch@lanzvilleinvest.com</a>
     </div>
+  </section>
 
-    <div class="portfolio-item">
-      <h3>Crypto Assets</h3>
-      <p class="en">Blockchain-driven opportunities with strict risk management.</p>
-      <p class="de">Blockchain-getriebene Chancen mit striktem Risikomanagement.</p>
+  <section id="portfolio" class="section">
+    <h2 class="en">Our Portfolio</h2>
+    <h2 class="de">Unser Portfolio</h2>
+
+    <div class="portfolio-grid">
+      <div class="portfolio-item">
+        <h3>Private Equity</h3>
+        <p class="en">Growth capital for family businesses and niche sectors.</p>
+        <p class="de">Wachstumskapital für Familienunternehmen und Nischenbranchen.</p>
+      </div>
+      <div class="portfolio-item">
+        <h3>Real Estate</h3>
+        <p class="en">Selective holdings in prime European and global markets.</p>
+        <p class="de">Selektive Beteiligungen an erstklassigen Immobilien in Europa und weltweit.</p>
+      </div>
+      <div class="portfolio-item">
+        <h3>Crypto Assets</h3>
+        <p class="en">Blockchain-driven opportunities with strict risk management.</p>
+        <p class="de">Blockchain-getriebene Chancen mit striktem Risikomanagement.</p>
+      </div>
+      <div class="portfolio-item">
+        <h3>Bespoke Solutions</h3>
+        <p class="en">Tailored financial structures for complex client needs.</p>
+        <p class="de">Maßgeschneiderte Finanzstrukturen für komplexe Kundenanforderungen.</p>
+      </div>
     </div>
+  </section>
 
-    <div class="portfolio-item">
-      <h3>Bespoke Solutions</h3>
-      <p class="en">Tailored financial structures for complex client needs.</p>
-      <p class="de">Maßgeschneiderte Finanzstrukturen für komplexe Kundenanforderungen.</p>
-    </div>
-  </div>
+  <a href="mailto:Office@lanzvilleinvest.com" class="contact-btn">Contact</a>
 
-  <p class="en" style="margin-top: 2rem; font-style: italic;">
-    Detailed portfolio information is available upon request.
-  </p>
-  <p class="de" style="margin-top: 2rem; font-style: italic;">
-    Detaillierte Portfolioinformationen erhalten Sie auf Anfrage.
-  </p>
-</section>
-
-<a href="mailto:Office@lanzvilleinvest.com" class="contact-btn">Contact</a>
-
-<footer>
-  &copy; 1990–2025 LANZVILLE INVESTMENTS ANSTALT — Vaduz, Liechtenstein
-</footer>
+  <footer>
+    &copy; 1990–2025 LANZVILLE INVESTMENTS ANSTALT — Vaduz, Liechtenstein
+  </footer>
+</div>
 
 <script>
+  // Intro Handling
+  document.getElementById('enter-btn').addEventListener('click', () => {
+    document.getElementById('intro').style.opacity = '0';
+    setTimeout(() => {
+      document.getElementById('intro').style.display = 'none';
+      document.getElementById('main-content').style.display = 'block';
+    }, 1000);
+  });
+
+  // Section Switch
   function showSection(id) {
     document.querySelectorAll('.section').forEach(el => el.classList.remove('active'));
     document.getElementById(id).classList.add('active');
   }
 
+  // Language Switch
   function setLang(lang) {
     document.querySelectorAll('.en, .de').forEach(el => el.style.display = 'none');
     document.querySelectorAll('.' + lang).forEach(el => el.style.display = 'block');
   }
 
-  // Default language
+  // Default Language
   setLang('en');
 </script>
 
