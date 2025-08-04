@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>LANZVILLE INVESTMENTS ANSTALT</title>
+  <link rel="icon" href="https://i.postimg.cc/MGrtBnXp/IMG-6148.png" type="image/png">
+  <style>
+    body {
+      font-family: 'Helvetica Neue', sans-serif;
+      background-color: #000;
+      color: #e5e5e5;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #111;
+      padding: 1rem 2rem;
+    }
+    header img {
+      height: 50px;
+      margin-right: 10px;
+    }
+    header h1 {
+      font-size: 1.5rem;
+      color: #d4af37;
+      margin: 0;
+    }
+    nav a {
+      color: #e5e5e5;
+      margin-left: 1rem;
+      text-decoration: none;
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+    nav a:hover {
+      color: #d4af37;
+    }
+    .lang-switch {
+      margin-left: 1rem;
+    }
+    .lang-switch button {
+      background: transparent;
+      border: 1px solid #555;
+      color: #e5e5e5;
+      padding: 5px 10px;
+      cursor: pointer;
+      margin-left: 5px;
+      transition: border 0.3s ease, color 0.3s ease;
+    }
+    .lang-switch button:hover {
+      border-color: #d4af37;
+      color: #d4af37;
+    }
+    .section {
+      padding: 2rem;
+      display: none;
+    }
+    .section.active {
+      display: block;
+    }
+    .team-member {
+      border-bottom: 1px solid #333;
+      padding: 1rem 0;
+    }
+    .team-member h3 {
+      color: #d4af37;
+      margin: 0 0 0.3rem;
+    }
+    .team-member a {
+      color: #d4af37;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 0.5rem;
+    }
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background: #111;
+      color: #999;
+      font-size: 0.9rem;
+      margin-top: 2rem;
+    }
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    .portfolio-item {
+      border: 1px solid #333;
+      padding: 1.5rem;
+      background: #111;
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+    .portfolio-item:hover {
+      transform: translateY(-8px) scale(1.02);
+      border-color: #d4af37;
+    }
+    .portfolio-item h3 {
+      color: #d4af37;
+      margin-top: 0;
+    }
+    .contact-btn {
+      display: inline-block;
+      margin: 1rem auto 0 auto;
+      padding: 0.5rem 1.2rem;
+      background: #d4af37;
+      color: #000;
+      font-weight: 600;
+      font-size: 0.9rem;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: background 0.3s ease;
+      text-align: center;
+      display: block;
+      width: max-content;
+    }
+    .contact-btn:hover {
+      background: #b8952f;
+    }
+  </style>
+</head>
+<body>
+<!-- Inhalt hier (gekürzt im Code-Block zur Übersichtlichkeit) -->
+<script>
+  function showSection(id) {
+    document.querySelectorAll('.section').forEach(el => el.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+  }
+
+  function setLang(lang) {
+    document.querySelectorAll('.en, .de').forEach(el => el.style.display = 'none');
+    document.querySelectorAll('.' + lang).forEach(el => el.style.display = 'block');
+  }
+
+  setLang('en');
+</script>
+</body>
+</html>
