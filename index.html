@@ -6,42 +6,146 @@
   <title>LANZVILLE INVESTMENTS ANSTALT</title>
   <link rel="icon" href="https://i.postimg.cc/MGrtBnXp/IMG-6148.png" type="image/png">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
     body {
       font-family: 'Helvetica Neue', sans-serif;
       background-color: #000;
       color: #e5e5e5;
+      margin: 0;
+      padding: 0;
       overflow-x: hidden;
     }
 
+    /* INTRO STYLES */
+    #intro {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      width: 100%;
+      background-color: #000;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      transition: opacity 1s ease;
+    }
+    #intro.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+    #intro h1 {
+      font-size: 2rem;
+      color: #d4af37;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+    #intro img {
+      width: 120px;
+      margin-bottom: 1.5rem;
+    }
+    #enter-btn {
+      padding: 0.6rem 1.5rem;
+      font-size: 1rem;
+      background-color: #d4af37;
+      color: #000;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background 0.3s ease;
+    }
+    #enter-btn:hover {
+      background-color: #b8952f;
+    }
+  </style>
+</head>
+<body>
+
+<!-- 🔽 INTRO SECTION -->
+<div id="intro">
+  <img src="https://i.postimg.cc/MGrtBnXp/IMG-6148.png" alt="Logo">
+  <h1>LANZVILLE INVESTMENTS ANSTALT</h1>
+  <button id="enter-btn">Enter</button>
+</div>
+
+<!-- 🔽 DEINE SEITENINHALTE STARTEN HIER -->
+<header>
+  <div style="display: flex; align-items: center;">
+    <img src="https://i.postimg.cc/MGrtBnXp/IMG-6148.png" alt="Logo">
+    <h1>LANZVILLE INVESTMENTS ANSTALT</h1>
+  </div>
+  <nav>
+    <a onclick="showSection('about')">About</a>
+    <a onclick="showSection('team')">Team</a>
+    <a onclick="showSection('portfolio')">Portfolio</a>
+    <div class="lang-switch">
+      <button onclick="setLang('en')">EN</button>
+      <button onclick="setLang('de')">DE</button>
+    </div>
+  </nav>
+</header>
+
+<!-- ALLES ANDERE BLEIBT UNVERÄNDERT -->
+
+<!-- 🔽 JAVASCRIPT UNTEN ERWEITERT -->
+<script>
+  function showSection(id) {
+    document.querySelectorAll('.section').forEach(el => el.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+  }
+
+  function setLang(lang) {
+    document.querySelectorAll('.en, .de').forEach(el => el.style.display = 'none');
+    document.querySelectorAll('.' + lang).forEach(el => el.style.display = 'block');
+  }
+
+  // Default language
+  setLang('en');
+
+  // 🔽 INTRO BUTTON INTERAKTION
+  document.getElementById('enter-btn').addEventListener('click', () => {
+    const intro = document.getElementById('intro');
+    intro.classList.add('hidden');
+    setTimeout(() => {
+      intro.style.display = 'none';
+    }, 1000); // Zeit für Fade-Out
+  });
+</script>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>LANZVILLE INVESTMENTS ANSTALT</title>
+  <link rel="icon" href="https://i.postimg.cc/MGrtBnXp/IMG-6148.png" type="image/png">
+  <style>
+    body {
+      font-family: 'Helvetica Neue', sans-serif;
+      background-color: #000;
+      color: #e5e5e5;
+      margin: 0;
+      padding: 0;
+    }
     header {
       display: flex;
       justify-content: space-between;
       align-items: center;
       background: #111;
       padding: 1rem 2rem;
-      position: fixed;
-      width: 100%;
-      top: 0;
-      z-index: 999;
     }
-
     header img {
       height: 50px;
       margin-right: 10px;
     }
-
     header h1 {
       font-size: 1.5rem;
       color: #d4af37;
       margin: 0;
     }
-
     nav a {
       color: #e5e5e5;
       margin-left: 1rem;
@@ -49,15 +153,12 @@
       cursor: pointer;
       transition: color 0.3s ease;
     }
-
     nav a:hover {
       color: #d4af37;
     }
-
     .lang-switch {
       margin-left: 1rem;
     }
-
     .lang-switch button {
       background: transparent;
       border: 1px solid #555;
@@ -67,87 +168,86 @@
       margin-left: 5px;
       transition: border 0.3s ease, color 0.3s ease;
     }
-
     .lang-switch button:hover {
       border-color: #d4af37;
       color: #d4af37;
     }
-
-    .intro {
-      height: 100vh;
-      background: url('https://i.postimg.cc/vTZStHcT/vaduz-night.jpg') no-repeat center center/cover;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 2rem;
-      animation: fadeIn 3s ease-in-out;
-    }
-
-    .intro h2 {
-      font-size: 2.8rem;
-      color: #fff;
-      margin-bottom: 1rem;
-      text-shadow: 0 0 10px #000;
-    }
-
-    .intro p {
-      font-size: 1.2rem;
-      color: #ccc;
-      max-width: 600px;
-      text-shadow: 0 0 5px #000;
-    }
-
-    .enter-btn {
-      margin-top: 2rem;
-      padding: 0.7rem 1.5rem;
-      background: #d4af37;
-      color: #000;
-      font-weight: bold;
-      border: none;
-      cursor: pointer;
-      border-radius: 5px;
-      font-size: 1rem;
-      transition: background 0.3s ease;
-    }
-
-    .enter-btn:hover {
-      background: #b8932d;
-    }
-
     .section {
-      padding: 6rem 2rem 2rem;
+      padding: 2rem;
       display: none;
     }
-
     .section.active {
       display: block;
     }
+    .team-member {
+      border-bottom: 1px solid #333;
+      padding: 1rem 0;
+    }
+    .team-member h3 {
+      color: #d4af37;
+      margin: 0 0 0.3rem;
+    }
+    .team-member a {
+      color: #d4af37;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 0.5rem;
+    }
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background: #111;
+      color: #999;
+      font-size: 0.9rem;
+      margin-top: 2rem;
+    }
+    /* Portfolio styling */
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    .portfolio-item {
+      border: 1px solid #333;
+      padding: 1.5rem;
+      background: #111;
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+    .portfolio-item:hover {
+      transform: translateY(-8px) scale(1.02);
+      border-color: #d4af37;
+    }
+    .portfolio-item h3 {
+      color: #d4af37;
+      margin-top: 0;
+    }
 
-    @keyframes fadeIn {
-      0% { opacity: 0; transform: scale(0.95); }
-      100% { opacity: 1; transform: scale(1); }
+    /* Contact Button Above Footer */
+    .contact-btn {
+      display: inline-block;
+      margin: 1rem auto 0 auto;
+      padding: 0.5rem 1.2rem;
+      background: #d4af37;
+      color: #000;
+      font-weight: 600;
+      font-size: 0.9rem;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: background 0.3s ease;
+      text-align: center;
+      display: block;
+      width: max-content;
+    }
+    .contact-btn:hover {
+      background: #b8952f;
     }
   </style>
 </head>
 <body>
 
-<!-- Intro Section -->
-<section class="intro" id="intro">
-  <h2>Welcome to LANZVILLE INVESTMENTS ANSTALT</h2>
-  <p>Shaping the future through innovative and sustainable investments.</p>
-  <button class="enter-btn" onclick="enterSite()">Enter Site</button>
-</section>
-
-<audio autoplay loop>
-  <source src="https://www.bensound.com/bensound-music/bensound-slowmotion.mp3" type="audio/mpeg">
-  Your browser does not support the audio element.
-</audio>
-
-<!-- Navigation + Sections (kommt im nächsten Teil) -->
-
-<!-- Navigation + Content -->
 <header>
   <div style="display: flex; align-items: center;">
     <img src="https://i.postimg.cc/MGrtBnXp/IMG-6148.png" alt="Logo">
@@ -247,65 +347,68 @@
   <h2 class="en">Our Portfolio</h2>
   <h2 class="de">Unser Portfolio</h2>
 
+  <p class="en">
+    We invest with a long-term perspective across select industries and innovative assets.
+    Below is a glimpse into areas we focus on. For more details, we invite you to contact us directly.
+  </p>
+  <p class="de">
+    Wir investieren mit einem langfristigen Ansatz in ausgewählte Branchen und innovative Anlageklassen.
+    Nachfolgend ein Einblick in unsere Tätigkeitsfelder. Für weitere Informationen kontaktieren Sie uns bitte direkt.
+  </p>
+
   <div class="portfolio-grid">
     <div class="portfolio-item">
-      <h3>Real Estate</h3>
-      <p class="en">Luxury residential and commercial properties across Europe.</p>
-      <p class="de">Luxuriöse Wohn- und Gewerbeimmobilien in ganz Europa.</p>
-    </div>
-    <div class="portfolio-item">
       <h3>Private Equity</h3>
-      <p class="en">Investments in scalable startups and mid-sized companies.</p>
-      <p class="de">Investitionen in skalierbare Start-ups und mittelständische Unternehmen.</p>
+      <p class="en">Growth capital for family businesses and niche sectors.</p>
+      <p class="de">Wachstumskapital für Familienunternehmen und Nischenbranchen.</p>
     </div>
+
+    <div class="portfolio-item">
+      <h3>Real Estate</h3>
+      <p class="en">Selective holdings in prime European and global markets.</p>
+      <p class="de">Selektive Beteiligungen an erstklassigen Immobilien in Europa und weltweit.</p>
+    </div>
+
     <div class="portfolio-item">
       <h3>Crypto Assets</h3>
-      <p class="en">Blockchain, DeFi and digital currency portfolios since 2015.</p>
-      <p class="de">Blockchain-, DeFi- und Digitalwährungsportfolios seit 2015.</p>
+      <p class="en">Blockchain-driven opportunities with strict risk management.</p>
+      <p class="de">Blockchain-getriebene Chancen mit striktem Risikomanagement.</p>
     </div>
+
     <div class="portfolio-item">
-      <h3>Art & Collectibles</h3>
-      <p class="en">Curated art investments and rare physical assets.</p>
-      <p class="de">Kuratiertes Kunst- und Sammlungsportfolio mit seltenen physischen Werten.</p>
+      <h3>Bespoke Solutions</h3>
+      <p class="en">Tailored financial structures for complex client needs.</p>
+      <p class="de">Maßgeschneiderte Finanzstrukturen für komplexe Kundenanforderungen.</p>
     </div>
   </div>
 
-  <a href="mailto:info@lanzvilleinvest.com" class="contact-btn en">Contact Us</a>
-  <a href="mailto:info@lanzvilleinvest.com" class="contact-btn de">Kontaktieren Sie uns</a>
+  <p class="en" style="margin-top: 2rem; font-style: italic;">
+    Detailed portfolio information is available upon request.
+  </p>
+  <p class="de" style="margin-top: 2rem; font-style: italic;">
+    Detaillierte Portfolioinformationen erhalten Sie auf Anfrage.
+  </p>
 </section>
 
+<a href="mailto:Office@lanzvilleinvest.com" class="contact-btn">Contact</a>
+
 <footer>
-  <p>&copy; 2025 LANZVILLE INVESTMENTS ANSTALT – All rights reserved.</p>
+  &copy; 1990–2025 LANZVILLE INVESTMENTS ANSTALT — Vaduz, Liechtenstein
 </footer>
 
-<!-- SCRIPTS -->
 <script>
-  // Navigation
   function showSection(id) {
     document.querySelectorAll('.section').forEach(el => el.classList.remove('active'));
     document.getElementById(id).classList.add('active');
   }
 
-  // Language switch
   function setLang(lang) {
     document.querySelectorAll('.en, .de').forEach(el => el.style.display = 'none');
     document.querySelectorAll('.' + lang).forEach(el => el.style.display = 'block');
   }
-  setLang('en');
 
-  // Intro ENTER key to enter site
-  document.addEventListener("keydown", function(e) {
-    if (e.key === "Enter") {
-      const intro = document.getElementById("intro");
-      if (intro) {
-        intro.style.transition = "opacity 1s ease";
-        intro.style.opacity = 0;
-        setTimeout(() => {
-          intro.style.display = "none";
-        }, 1000);
-      }
-    }
-  });
+  // Default language
+  setLang('en');
 </script>
 
 </body>
