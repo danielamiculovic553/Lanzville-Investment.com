@@ -6,58 +6,55 @@
   <title>LANZVILLE INVESTMENTS ANSTALT</title>
   <link rel="icon" href="https://i.postimg.cc/MGrtBnXp/IMG-6148.png" type="image/png">
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       font-family: 'Helvetica Neue', sans-serif;
       background-color: #000;
       color: #e5e5e5;
       margin: 0;
       padding: 0;
-      overflow-x: hidden;
     }
 
-    /* Intro */
+    /* Intro Styles */
     #intro {
       position: fixed;
       top: 0; left: 0;
-      width: 100%; height: 100%;
+      width: 100%;
+      height: 100vh;
+      background: url('https://i.postimg.cc/MGrtBnXp/IMG-6148.png') center no-repeat;
       background-color: #000;
-      display: flex; flex-direction: column;
-      justify-content: center; align-items: center;
+      background-size: 100px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       z-index: 9999;
       transition: opacity 1s ease;
-    }
-
-    #intro.hidden {
-      opacity: 0;
-      pointer-events: none;
     }
 
     #intro h1 {
       font-size: 2rem;
       color: #d4af37;
-      margin-bottom: 1rem;
-      text-align: center;
+      margin-top: 20px;
     }
 
-    #intro img {
-      width: 120px;
-      margin-bottom: 1.5rem;
-    }
-
-    #enter-btn {
-      padding: 0.6rem 1.5rem;
+    #enterBtn {
+      margin-top: 30px;
+      padding: 10px 30px;
       font-size: 1rem;
-      background-color: #d4af37;
+      background: #d4af37;
       color: #000;
       border: none;
-      border-radius: 4px;
       cursor: pointer;
-      font-weight: bold;
+      border-radius: 5px;
       transition: background 0.3s ease;
     }
 
-    #enter-btn:hover {
-      background-color: #b8952f;
+    #enterBtn:hover {
+      background: #b8952f;
     }
 
     header {
@@ -136,6 +133,15 @@
       margin-top: 0.5rem;
     }
 
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background: #111;
+      color: #999;
+      font-size: 0.9rem;
+      margin-top: 2rem;
+    }
+
     .portfolio-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -181,28 +187,16 @@
     .contact-btn:hover {
       background: #b8952f;
     }
-
-    footer {
-      text-align: center;
-      padding: 1rem;
-      background: #111;
-      color: #999;
-      font-size: 0.9rem;
-      margin-top: 2rem;
-    }
   </style>
 </head>
 <body>
 
-<!-- 🔶 INTRO PAGE -->
 <div id="intro">
-  <img src="https://i.postimg.cc/MGrtBnXp/IMG-6148.png" alt="Logo">
-  <h1>LANZVILLE INVESTMENTS ANSTALT</h1>
-  <button id="enter-btn">Enter</button>
+  <h1>Welcome to LANZVILLE INVESTMENTS ANSTALT</h1>
+  <button id="enterBtn">Enter</button>
 </div>
 
-<!-- 🔷 HEADER -->
-<header>
+<header style="display: none;">
   <div style="display: flex; align-items: center;">
     <img src="https://i.postimg.cc/MGrtBnXp/IMG-6148.png" alt="Logo">
     <h1>LANZVILLE INVESTMENTS ANSTALT</h1>
@@ -218,7 +212,6 @@
   </nav>
 </header>
 
-<!-- 🔶 ABOUT -->
 <section id="about" class="section active">
   <div class="en">
     <h2>About Us</h2>
@@ -230,12 +223,11 @@
   </div>
 </section>
 
-<!-- 🔶 TEAM -->
 <section id="team" class="section">
   <h2 class="en">Our Team</h2>
   <h2 class="de">Unser Team</h2>
 
-  <!-- 🔹 EIN TEAM-MEMBER BLOCK = BIO + KONTAKT -->
+  <!-- Hier kommen alle Teammitglieder -->
   <div class="team-member">
     <h3>David Luksic Lederer – CEO</h3>
     <p class="en">David has over 20 years of experience in global wealth management and leads the strategic direction of the firm.</p>
@@ -243,15 +235,73 @@
     <a href="mailto:David.Lederer@lanzvilleinvest.com">David.Lederer@lanzvilleinvest.com</a>
   </div>
 
-  <!-- Wiederhole wie oben für alle Mitglieder -->
-  <!-- Benedit Moos, Nathan Gaila, Sarah Schreiber, Raymond Hattori, Alex Bonpensiero, Cedrick Vogt, Richard Wallace, David Ruggenau -->
-  <!-- (Bereits in deinem alten Code enthalten und vollständig) -->
+  <div class="team-member">
+    <h3>Benedit Moos – CFO</h3>
+    <p class="en">Benedit oversees all financial operations, reporting, and compliance for the company.</p>
+    <p class="de">Benedit ist verantwortlich für die Finanzoperationen, Berichterstattung und Compliance.</p>
+    <a href="mailto:Benedit.Moos@lanzvilleinvest.com">Benedit.Moos@lanzvilleinvest.com</a>
+  </div>
+
+  <div class="team-member">
+    <h3>Nathan Gaila – COO</h3>
+    <p class="en">Nathan manages day-to-day operations and organizational strategy across departments.</p>
+    <p class="de">Nathan steuert die täglichen Abläufe und die Organisationsstrategie.</p>
+    <a href="mailto:Nathan.Gaila@lanzvilleinvest.com">Nathan.Gaila@lanzvilleinvest.com</a>
+  </div>
+
+  <div class="team-member">
+    <h3>David Ruggenau – Head of Legal</h3>
+    <p class="en">David is responsible for all legal matters including structuring, compliance, and contracts.</p>
+    <p class="de">David ist für alle rechtlichen Belange wie Strukturierung, Compliance und Verträge zuständig.</p>
+    <a href="mailto:David.Ruggenau@lanzvilleinvest.com">David.Ruggenau@lanzvilleinvest.com</a>
+  </div>
+
+  <div class="team-member">
+    <h3>Sarah Schreiber – Legal Counsel</h3>
+    <p class="en">Sarah specializes in regulatory law and advises on cross-border investments.</p>
+    <p class="de">Sarah ist auf Regulierungsrecht spezialisiert und berät bei grenzüberschreitenden Investitionen.</p>
+    <a href="mailto:Sarah.Schreiber@lanzvilleinvest.com">Sarah.Schreiber@lanzvilleinvest.com</a>
+  </div>
+
+  <div class="team-member">
+    <h3>Raymond Hattori – Chief Strategist</h3>
+    <p class="en">Raymond leads investment strategy with a focus on emerging markets.</p>
+    <p class="de">Raymond leitet die Investmentstrategie mit Fokus auf Schwellenmärkte.</p>
+    <a href="mailto:Raymond.Hattori@lanzvilleinvest.com">Raymond.Hattori@lanzvilleinvest.com</a>
+  </div>
+
+  <div class="team-member">
+    <h3>Alex Bonpensiero – Research Lead</h3>
+    <p class="en">Alex conducts in-depth market research to support portfolio decisions.</p>
+    <p class="de">Alex führt tiefgreifende Marktanalysen zur Unterstützung von Portfoliostrategien durch.</p>
+    <a href="mailto:Alex.Bonpensiero@lanzvilleinvest.com">Alex.Bonpensiero@lanzvilleinvest.com</a>
+  </div>
+
+  <div class="team-member">
+    <h3>Cedrick Vogt – Client Relations</h3>
+    <p class="en">Cedrick builds long-term client relationships and ensures quality service.</p>
+    <p class="de">Cedrick pflegt langfristige Kundenbeziehungen und sichert exzellenten Service.</p>
+    <a href="mailto:Cedrick.Vogt@lanzvilleinvest.com">Cedrick.Vogt@lanzvilleinvest.com</a>
+  </div>
+
+  <div class="team-member">
+    <h3>Richard Wallace – Risk Manager</h3>
+    <p class="en">Richard implements robust risk management strategies across asset classes.</p>
+    <p class="de">Richard implementiert umfassende Risikomanagementstrategien über verschiedene Anlageklassen hinweg.</p>
+    <a href="mailto:Richard.Wallace@lanzvilleinvest.com">Richard.Wallace@lanzvilleinvest.com</a>
+  </div>
 </section>
 
-<!-- 🔶 PORTFOLIO -->
 <section id="portfolio" class="section">
   <h2 class="en">Our Portfolio</h2>
   <h2 class="de">Unser Portfolio</h2>
+
+  <p class="en">
+    We invest with a long-term perspective across select industries and innovative assets.
+  </p>
+  <p class="de">
+    Wir investieren mit einem langfristigen Ansatz in ausgewählte Branchen und innovative Anlageklassen.
+  </p>
 
   <div class="portfolio-grid">
     <div class="portfolio-item">
@@ -278,17 +328,21 @@
       <p class="de">Maßgeschneiderte Finanzstrukturen für komplexe Kundenanforderungen.</p>
     </div>
   </div>
+
+  <p class="en" style="margin-top: 2rem; font-style: italic;">
+    Detailed portfolio information is available upon request.
+  </p>
+  <p class="de" style="margin-top: 2rem; font-style: italic;">
+    Detaillierte Portfolioinformationen erhalten Sie auf Anfrage.
+  </p>
 </section>
 
-<!-- 🔶 CONTACT -->
 <a href="mailto:Office@lanzvilleinvest.com" class="contact-btn">Contact</a>
 
-<!-- 🔶 FOOTER -->
 <footer>
   &copy; 1990–2025 LANZVILLE INVESTMENTS ANSTALT — Vaduz, Liechtenstein
 </footer>
 
-<!-- 🔶 JAVASCRIPT -->
 <script>
   function showSection(id) {
     document.querySelectorAll('.section').forEach(el => el.classList.remove('active'));
@@ -300,15 +354,17 @@
     document.querySelectorAll('.' + lang).forEach(el => el.style.display = 'block');
   }
 
-  setLang('en');
-
-  document.getElementById('enter-btn').addEventListener('click', () => {
-    const intro = document.getElementById('intro');
-    intro.classList.add('hidden');
+  document.getElementById('enterBtn').addEventListener('click', function () {
+    document.getElementById('intro').style.opacity = '0';
     setTimeout(() => {
-      intro.style.display = 'none';
+      document.getElementById('intro').style.display = 'none';
+      document.querySelector('header').style.display = 'flex';
+      setLang('en');
     }, 1000);
   });
+
+  // Set default language
+  setLang('en');
 </script>
 
 </body>
