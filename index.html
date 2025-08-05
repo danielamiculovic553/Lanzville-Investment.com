@@ -7,6 +7,8 @@
   <link rel="icon" href="https://i.postimg.cc/MGrtBnXp/IMG-6148.png" type="image/png">
   <style>
     * {
+      margin: 0;
+      padding: 0;
       box-sizing: border-box;
     }
 
@@ -14,38 +16,40 @@
       font-family: 'Helvetica Neue', sans-serif;
       background-color: #000;
       color: #e5e5e5;
-      margin: 0;
-      padding: 0;
+      overflow-x: hidden;
     }
 
-    /* Intro Styles */
+    /* INTRO SECTION */
     #intro {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%;
       height: 100vh;
-      background: url('https://i.postimg.cc/MGrtBnXp/IMG-6148.png') center no-repeat;
+      width: 100%;
       background-color: #000;
-      background-size: 100px;
       display: flex;
       flex-direction: column;
-      align-items: center;
       justify-content: center;
-      z-index: 9999;
-      transition: opacity 1s ease;
+      align-items: center;
+      transition: opacity 0.8s ease;
+      position: relative;
+      z-index: 10;
     }
 
-    #intro h1 {
-      font-size: 2rem;
-      color: #d4af37;
-      margin-top: 20px;
+    #intro img {
+      height: 100px;
+      animation: pulse 2s infinite ease-in-out;
+      filter: drop-shadow(0 0 15px #d4af37);
     }
 
-    #enterBtn {
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    #intro button {
       margin-top: 30px;
-      padding: 10px 30px;
+      padding: 10px 25px;
       font-size: 1rem;
-      background: #d4af37;
+      background-color: #d4af37;
       color: #000;
       border: none;
       cursor: pointer;
@@ -53,16 +57,26 @@
       transition: background 0.3s ease;
     }
 
-    #enterBtn:hover {
-      background: #b8952f;
+    #intro button:hover {
+      background-color: #b8952f;
     }
 
+    /* MAIN CONTENT */
+    #main {
+      display: none;
+      background-color: #000;
+    }
+
+    /* NAVIGATION */
     header {
       display: flex;
       justify-content: space-between;
       align-items: center;
       background: #111;
       padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
     }
 
     header img {
@@ -73,13 +87,13 @@
     header h1 {
       font-size: 1.5rem;
       color: #d4af37;
-      margin: 0;
     }
 
     nav a {
       color: #e5e5e5;
-      margin-left: 1rem;
+      margin-left: 1.5rem;
       text-decoration: none;
+      font-weight: 500;
       cursor: pointer;
       transition: color 0.3s ease;
     }
@@ -88,27 +102,8 @@
       color: #d4af37;
     }
 
-    .lang-switch {
-      margin-left: 1rem;
-    }
-
-    .lang-switch button {
-      background: transparent;
-      border: 1px solid #555;
-      color: #e5e5e5;
-      padding: 5px 10px;
-      cursor: pointer;
-      margin-left: 5px;
-      transition: border 0.3s ease, color 0.3s ease;
-    }
-
-    .lang-switch button:hover {
-      border-color: #d4af37;
-      color: #d4af37;
-    }
-
     .section {
-      padding: 2rem;
+      padding: 3rem 2rem;
       display: none;
     }
 
@@ -116,21 +111,49 @@
       display: block;
     }
 
+    /* HERO / WELCOME SECTION */
+    #welcome {
+      background: url('https://i.postimg.cc/nz0XnWBn/IMG-6188.jpg') center center / cover no-repeat;
+      text-align: center;
+      padding: 7rem 2rem;
+    }
+
+    #welcome h2 {
+      font-size: 2.5rem;
+      color: #fff;
+      margin-bottom: 1rem;
+      text-shadow: 2px 2px 5px #000;
+    }
+
+    #welcome p {
+      max-width: 700px;
+      margin: 0 auto;
+      font-size: 1.2rem;
+      color: #ccc;
+      text-shadow: 1px 1px 3px #000;
+    }
+
+    /* TEAM SECTION */
     .team-member {
-      border-bottom: 1px solid #333;
-      padding: 1rem 0;
+      border-left: 4px solid #d4af37;
+      padding: 1rem;
+      margin-bottom: 2rem;
+      background-color: #111;
+      box-shadow: 0 0 10px rgba(0,0,0,0.4);
     }
 
     .team-member h3 {
       color: #d4af37;
-      margin: 0 0 0.3rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .team-member p {
+      margin-bottom: 0.3rem;
     }
 
     .team-member a {
       color: #d4af37;
       text-decoration: none;
-      display: inline-block;
-      margin-top: 0.5rem;
     }
 
     footer {
@@ -139,232 +162,159 @@
       background: #111;
       color: #999;
       font-size: 0.9rem;
-      margin-top: 2rem;
-    }
-
-    .portfolio-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 2rem;
-      margin-top: 2rem;
-    }
-
-    .portfolio-item {
-      border: 1px solid #333;
-      padding: 1.5rem;
-      background: #111;
-      transition: transform 0.3s ease, border-color 0.3s ease;
-    }
-
-    .portfolio-item:hover {
-      transform: translateY(-8px) scale(1.02);
-      border-color: #d4af37;
-    }
-
-    .portfolio-item h3 {
-      color: #d4af37;
-      margin-top: 0;
-    }
-
-    .contact-btn {
-      display: inline-block;
-      margin: 1rem auto 0 auto;
-      padding: 0.5rem 1.2rem;
-      background: #d4af37;
-      color: #000;
-      font-weight: 600;
-      font-size: 0.9rem;
-      border: none;
-      cursor: pointer;
-      text-decoration: none;
-      border-radius: 4px;
-      transition: background 0.3s ease;
-      text-align: center;
-      display: block;
-      width: max-content;
-    }
-
-    .contact-btn:hover {
-      background: #b8952f;
+      margin-top: 3rem;
     }
   </style>
 </head>
 <body>
 
+<!-- INTRO SECTION -->
 <div id="intro">
-  <h1>Welcome to LANZVILLE INVESTMENTS ANSTALT</h1>
+  <img src="https://i.postimg.cc/MGrtBnXp/IMG-6148.png" alt="Logo" />
   <button id="enterBtn">Enter</button>
 </div>
 
-<header style="display: none;">
-  <div style="display: flex; align-items: center;">
-    <img src="https://i.postimg.cc/MGrtBnXp/IMG-6148.png" alt="Logo">
-    <h1>LANZVILLE INVESTMENTS ANSTALT</h1>
-  </div>
-  <nav>
-    <a onclick="showSection('about')">About</a>
-    <a onclick="showSection('team')">Team</a>
-    <a onclick="showSection('portfolio')">Portfolio</a>
-    <div class="lang-switch">
-      <button onclick="setLang('en')">EN</button>
-      <button onclick="setLang('de')">DE</button>
-    </div>
-  </nav>
-</header>
+<!-- MUSIC -->
+<audio id="introMusic" autoplay loop>
+  <source src="https://www.bensound.com/bensound-music/bensound-slowmotion.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
 
-<section id="about" class="section active">
-  <div class="en">
+<!-- MAIN CONTENT -->
+<div id="main">
+
+  <!-- HEADER -->
+  <header>
+    <div style="display: flex; align-items: center;">
+      <img src="https://i.postimg.cc/MGrtBnXp/IMG-6148.png" alt="Logo" />
+      <h1>LANZVILLE INVESTMENTS ANSTALT</h1>
+    </div>
+    <nav>
+      <a onclick="showSection('about')">About Us</a>
+      <a onclick="showSection('team')">Our Team</a>
+      <a onclick="showSection('portfolio')">Portfolio</a>
+      <a onclick="showSection('privacy')">Privacy Policy</a>
+    </nav>
+  </header>
+
+  <!-- WELCOME -->
+  <section id="welcome" class="section active">
+    <h2>Welcome to LANZVILLE INVESTMENTS</h2>
+    <p>
+      We are a private investment company based in Liechtenstein, focused on long-term value creation through private equity, real estate, crypto assets and bespoke financial solutions.
+    </p>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="section">
     <h2>About Us</h2>
-    <p>LANZVILLE INVESTMENTS ANSTALT is a private investment company based in Liechtenstein. Founded in 1990, we specialize in long-term value creation through private equity, real estate, crypto assets and bespoke financial solutions.</p>
-  </div>
-  <div class="de">
-    <h2>Über Uns</h2>
-    <p>LANZVILLE INVESTMENTS ANSTALT ist eine private Investmentgesellschaft mit Sitz in Liechtenstein. Gegründet im Jahr 1990, konzentrieren wir uns auf langfristige Wertschöpfung durch Private Equity, Immobilien, Krypto Assets und maßgeschneiderte Finanzlösungen.</p>
-  </div>
-</section>
+    <p>
+      Founded in 1990, LANZVILLE INVESTMENTS ANSTALT has operated discreetly at the crossroads of tradition and innovation. We pursue value through selective investments and tailored financial strategies.
+    </p>
+  </section>
 
-<section id="team" class="section">
-  <h2 class="en">Our Team</h2>
-  <h2 class="de">Unser Team</h2>
+  <!-- TEAM -->
+  <section id="team" class="section">
+    <h2>Our Team</h2>
 
-  <!-- Hier kommen alle Teammitglieder -->
-  <div class="team-member">
-    <h3>David Luksic Lederer – CEO</h3>
-    <p class="en">David has over 20 years of experience in global wealth management and leads the strategic direction of the firm.</p>
-    <p class="de">David verfügt über mehr als 20 Jahre Erfahrung im globalen Vermögensmanagement und leitet die strategische Ausrichtung des Unternehmens.</p>
-    <a href="mailto:David.Lederer@lanzvilleinvest.com">David.Lederer@lanzvilleinvest.com</a>
-  </div>
-
-  <div class="team-member">
-    <h3>Benedit Moos – CFO</h3>
-    <p class="en">Benedit oversees all financial operations, reporting, and compliance for the company.</p>
-    <p class="de">Benedit ist verantwortlich für die Finanzoperationen, Berichterstattung und Compliance.</p>
-    <a href="mailto:Benedit.Moos@lanzvilleinvest.com">Benedit.Moos@lanzvilleinvest.com</a>
-  </div>
-
-  <div class="team-member">
-    <h3>Nathan Gaila – COO</h3>
-    <p class="en">Nathan manages day-to-day operations and organizational strategy across departments.</p>
-    <p class="de">Nathan steuert die täglichen Abläufe und die Organisationsstrategie.</p>
-    <a href="mailto:Nathan.Gaila@lanzvilleinvest.com">Nathan.Gaila@lanzvilleinvest.com</a>
-  </div>
-
-  <div class="team-member">
-    <h3>David Ruggenau – Head of Legal</h3>
-    <p class="en">David is responsible for all legal matters including structuring, compliance, and contracts.</p>
-    <p class="de">David ist für alle rechtlichen Belange wie Strukturierung, Compliance und Verträge zuständig.</p>
-    <a href="mailto:David.Ruggenau@lanzvilleinvest.com">David.Ruggenau@lanzvilleinvest.com</a>
-  </div>
-
-  <div class="team-member">
-    <h3>Sarah Schreiber – Legal Counsel</h3>
-    <p class="en">Sarah specializes in regulatory law and advises on cross-border investments.</p>
-    <p class="de">Sarah ist auf Regulierungsrecht spezialisiert und berät bei grenzüberschreitenden Investitionen.</p>
-    <a href="mailto:Sarah.Schreiber@lanzvilleinvest.com">Sarah.Schreiber@lanzvilleinvest.com</a>
-  </div>
-
-  <div class="team-member">
-    <h3>Raymond Hattori – Chief Strategist</h3>
-    <p class="en">Raymond leads investment strategy with a focus on emerging markets.</p>
-    <p class="de">Raymond leitet die Investmentstrategie mit Fokus auf Schwellenmärkte.</p>
-    <a href="mailto:Raymond.Hattori@lanzvilleinvest.com">Raymond.Hattori@lanzvilleinvest.com</a>
-  </div>
-
-  <div class="team-member">
-    <h3>Alex Bonpensiero – Research Lead</h3>
-    <p class="en">Alex conducts in-depth market research to support portfolio decisions.</p>
-    <p class="de">Alex führt tiefgreifende Marktanalysen zur Unterstützung von Portfoliostrategien durch.</p>
-    <a href="mailto:Alex.Bonpensiero@lanzvilleinvest.com">Alex.Bonpensiero@lanzvilleinvest.com</a>
-  </div>
-
-  <div class="team-member">
-    <h3>Cedrick Vogt – Client Relations</h3>
-    <p class="en">Cedrick builds long-term client relationships and ensures quality service.</p>
-    <p class="de">Cedrick pflegt langfristige Kundenbeziehungen und sichert exzellenten Service.</p>
-    <a href="mailto:Cedrick.Vogt@lanzvilleinvest.com">Cedrick.Vogt@lanzvilleinvest.com</a>
-  </div>
-
-  <div class="team-member">
-    <h3>Richard Wallace – Risk Manager</h3>
-    <p class="en">Richard implements robust risk management strategies across asset classes.</p>
-    <p class="de">Richard implementiert umfassende Risikomanagementstrategien über verschiedene Anlageklassen hinweg.</p>
-    <a href="mailto:Richard.Wallace@lanzvilleinvest.com">Richard.Wallace@lanzvilleinvest.com</a>
-  </div>
-</section>
-
-<section id="portfolio" class="section">
-  <h2 class="en">Our Portfolio</h2>
-  <h2 class="de">Unser Portfolio</h2>
-
-  <p class="en">
-    We invest with a long-term perspective across select industries and innovative assets.
-  </p>
-  <p class="de">
-    Wir investieren mit einem langfristigen Ansatz in ausgewählte Branchen und innovative Anlageklassen.
-  </p>
-
-  <div class="portfolio-grid">
-    <div class="portfolio-item">
-      <h3>Private Equity</h3>
-      <p class="en">Growth capital for family businesses and niche sectors.</p>
-      <p class="de">Wachstumskapital für Familienunternehmen und Nischenbranchen.</p>
+    <div class="team-member">
+      <h3>David Luksic Lederer – CEO</h3>
+      <p>Over 20 years of experience in global wealth management and strategic leadership.</p>
+      <a href="mailto:David.Lederer@lanzvilleinvest.com">David.Lederer@lanzvilleinvest.com</a>
     </div>
 
-    <div class="portfolio-item">
-      <h3>Real Estate</h3>
-      <p class="en">Selective holdings in prime European and global markets.</p>
-      <p class="de">Selektive Beteiligungen an erstklassigen Immobilien in Europa und weltweit.</p>
+    <div class="team-member">
+      <h3>Benedit Moos – Co-Founder</h3>
+      <p>Visionary entrepreneur focused on alternative asset strategies and sustainable growth.</p>
+      <a href="mailto:Benedit.Moos@lanzvilleinvest.com">Benedit.Moos@lanzvilleinvest.com</a>
     </div>
 
-    <div class="portfolio-item">
-      <h3>Crypto Assets</h3>
-      <p class="en">Blockchain-driven opportunities with strict risk management.</p>
-      <p class="de">Blockchain-getriebene Chancen mit striktem Risikomanagement.</p>
+    <div class="team-member">
+      <h3>Nathan Alexandrè Gaila – CFO</h3>
+      <p>Leads financial operations and ensures regulatory compliance.</p>
+      <a href="mailto:Nathan.Gaila@lanzvilleinvest.com">Nathan.Gaila@lanzvilleinvest.com</a>
     </div>
 
-    <div class="portfolio-item">
-      <h3>Bespoke Solutions</h3>
-      <p class="en">Tailored financial structures for complex client needs.</p>
-      <p class="de">Maßgeschneiderte Finanzstrukturen für komplexe Kundenanforderungen.</p>
+    <div class="team-member">
+      <h3>Sarah Schreiber – Lead Analyst</h3>
+      <p>Heads market research and investment trend analysis.</p>
+      <a href="mailto:Sarah.Schreiber@lanzvilleinvest.com">Sarah.Schreiber@lanzvilleinvest.com</a>
     </div>
-  </div>
 
-  <p class="en" style="margin-top: 2rem; font-style: italic;">
-    Detailed portfolio information is available upon request.
-  </p>
-  <p class="de" style="margin-top: 2rem; font-style: italic;">
-    Detaillierte Portfolioinformationen erhalten Sie auf Anfrage.
-  </p>
-</section>
+    <div class="team-member">
+      <h3>Raymond Hattori – Head of Alternative Investment</h3>
+      <p>Expert in crypto assets and innovative financial instruments.</p>
+      <a href="mailto:Raymond.Hattori@lanzvilleinvest.com">Raymond.Hattori@lanzvilleinvest.com</a>
+    </div>
 
-<a href="mailto:Office@lanzvilleinvest.com" class="contact-btn">Contact</a>
+    <div class="team-member">
+      <h3>Alex Bonpensiero – Portfolio Manager</h3>
+      <p>Manages multi-asset portfolios and custom investment strategies.</p>
+      <a href="mailto:Alex.Bonpensiero@lanzvilleinvest.com">Alex.Bonpensiero@lanzvilleinvest.com</a>
+    </div>
 
-<footer>
-  &copy; 1990–2025 LANZVILLE INVESTMENTS ANSTALT — Vaduz, Liechtenstein
-</footer>
+    <div class="team-member">
+      <h3>Cedrick Antoine Vogt – Risk Management</h3>
+      <p>Responsible for cross-asset risk analysis and capital protection strategies.</p>
+      <a href="mailto:Cedrick.Vogt@lanzvilleinvest.com">Cedrick.Vogt@lanzvilleinvest.com</a>
+    </div>
 
+    <div class="team-member">
+      <h3>Richard Wallace – Partner</h3>
+      <p>Seasoned private equity partner with decades of experience in global markets.</p>
+      <a href="mailto:Richard.Wallace@lanzvilleinvest.com">Richard.Wallace@lanzvilleinvest.com</a>
+    </div>
+
+    <div class="team-member">
+      <h3>David Ruggenau – Investor Relations</h3>
+      <p>Oversees communication with investors and long-term relationship development.</p>
+      <a href="mailto:David.Ruggenau@lanzvilleinvest.com">David.Ruggenau@lanzvilleinvest.com</a>
+    </div>
+  </section>
+
+  <!-- PORTFOLIO -->
+  <section id="portfolio" class="section">
+    <h2>Our Portfolio</h2>
+    <p>We invest across select industries and innovative assets:</p>
+    <ul>
+      <li><strong>Private Equity</strong> – Growth capital for family businesses and niche sectors.</li>
+      <li><strong>Real Estate</strong> – Holdings in prime European and global markets.</li>
+      <li><strong>Crypto Assets</strong> – Blockchain-driven opportunities with disciplined risk control.</li>
+      <li><strong>Bespoke Solutions</strong> – Tailored financial structures for complex needs.</li>
+    </ul>
+  </section>
+
+  <!-- PRIVACY POLICY -->
+  <section id="privacy" class="section">
+    <h2>Privacy Policy</h2>
+    <p>This website does not collect or store personal data. Communication occurs only via direct inquiry. For more information, please contact us directly.</p>
+  </section>
+
+  <footer>
+    &copy; 1990–2025 LANZVILLE INVESTMENTS ANSTALT — Vaduz, Liechtenstein
+  </footer>
+</div>
+
+<!-- SCRIPT -->
 <script>
+  const enterBtn = document.getElementById("enterBtn");
+  const intro = document.getElementById("intro");
+  const main = document.getElementById("main");
+
+  enterBtn.addEventListener("click", () => {
+    const music = document.getElementById("introMusic");
+    music.pause();
+    intro.style.opacity = "0";
+    setTimeout(() => {
+      intro.style.display = "none";
+      main.style.display = "block";
+    }, 800);
+  });
+
   function showSection(id) {
     document.querySelectorAll('.section').forEach(el => el.classList.remove('active'));
     document.getElementById(id).classList.add('active');
   }
-
-  function setLang(lang) {
-    document.querySelectorAll('.en, .de').forEach(el => el.style.display = 'none');
-    document.querySelectorAll('.' + lang).forEach(el => el.style.display = 'block');
-  }
-
-  document.getElementById('enterBtn').addEventListener('click', function () {
-    document.getElementById('intro').style.opacity = '0';
-    setTimeout(() => {
-      document.getElementById('intro').style.display = 'none';
-      document.querySelector('header').style.display = 'flex';
-      setLang('en');
-    }, 1000);
-  });
-
-  // Set default language
-  setLang('en');
 </script>
 
 </body>
