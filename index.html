@@ -6,9 +6,6 @@
   <title>LANZVILLE INVESTMENTS ANSTALT</title>
   <link rel="icon" href="https://i.postimg.cc/MGrtBnXp/IMG-6148.png" type="image/png">
   <style>
-    * {
-      box-sizing: border-box;
-    }
     body {
       font-family: 'Helvetica Neue', sans-serif;
       background-color: #000;
@@ -17,41 +14,41 @@
       padding: 0;
     }
 
-    /* INTRO SCREEN */
-    #intro-screen {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100vh;
-      background: #000;
+    /* Intro / Splash Screen */
+    #intro {
       display: flex;
       flex-direction: column;
-      justify-content: center;
       align-items: center;
-      z-index: 9999;
-      transition: opacity 0.8s ease;
+      justify-content: center;
+      height: 100vh;
+      background-color: #000;
+      text-align: center;
+      padding: 2rem;
     }
-    #intro-screen img {
-      width: 120px;
-      margin-bottom: 20px;
+    #intro img {
+      width: 150px;
+      height: auto;
+      margin-bottom: 1.5rem;
     }
-    #enter-site-btn {
-      padding: 12px 24px;
-      background-color: #d4af37;
+    #enterBtn {
+      background: #d4af37;
       color: #000;
       font-weight: bold;
+      padding: 0.8rem 2rem;
       border: none;
-      border-radius: 4px;
-      cursor: pointer;
+      border-radius: 5px;
       font-size: 1rem;
+      cursor: pointer;
       transition: background 0.3s ease;
     }
-    #enter-site-btn:hover {
-      background-color: #b8952f;
+    #enterBtn:hover {
+      background: #b8952f;
     }
 
-    /* HEADER */
+    #mainContent {
+      display: none;
+    }
+
     header {
       display: flex;
       justify-content: space-between;
@@ -78,7 +75,6 @@
     nav a:hover {
       color: #d4af37;
     }
-
     .lang-switch {
       margin-left: 1rem;
     }
@@ -95,7 +91,6 @@
       border-color: #d4af37;
       color: #d4af37;
     }
-
     .section {
       padding: 2rem;
       display: none;
@@ -103,7 +98,6 @@
     .section.active {
       display: block;
     }
-
     .team-member {
       border-bottom: 1px solid #333;
       padding: 1rem 0;
@@ -118,7 +112,14 @@
       display: inline-block;
       margin-top: 0.5rem;
     }
-
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background: #111;
+      color: #999;
+      font-size: 0.9rem;
+      margin-top: 2rem;
+    }
     .portfolio-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -139,45 +140,39 @@
       color: #d4af37;
       margin-top: 0;
     }
-
     .contact-btn {
       display: inline-block;
-      margin: 2rem auto 0;
-      padding: 0.6rem 1.5rem;
+      margin: 1rem auto 0 auto;
+      padding: 0.5rem 1.2rem;
       background: #d4af37;
       color: #000;
       font-weight: 600;
-      font-size: 1rem;
+      font-size: 0.9rem;
       border: none;
       cursor: pointer;
       text-decoration: none;
       border-radius: 4px;
       transition: background 0.3s ease;
+      text-align: center;
+      display: block;
+      width: max-content;
     }
     .contact-btn:hover {
       background: #b8952f;
-    }
-
-    footer {
-      text-align: center;
-      padding: 1rem;
-      background: #111;
-      color: #999;
-      font-size: 0.9rem;
-      margin-top: 2rem;
     }
   </style>
 </head>
 <body>
 
-<!-- INTRO SCREEN -->
-<div id="intro-screen">
-  <img src="https://i.postimg.cc/MGrtBnXp/IMG-6148.png" alt="Logo" />
-  <button id="enter-site-btn">Enter Site</button>
+<!-- INTRO SPLASH SCREEN -->
+<div id="intro">
+  <img src="https://i.postimg.cc/MGrtBnXp/IMG-6148.png" alt="LANZVILLE Logo" />
+  <h1 style="color:#d4af37;">LANZVILLE INVESTMENTS ANSTALT</h1>
+  <button id="enterBtn">Enter</button>
 </div>
 
-<!-- MAIN PAGE CONTENT -->
-<div id="main-content" style="display: none;">
+<!-- MAIN CONTENT -->
+<div id="mainContent">
   <header>
     <div style="display: flex; align-items: center;">
       <img src="https://i.postimg.cc/MGrtBnXp/IMG-6148.png" alt="Logo">
@@ -208,61 +203,39 @@
   <section id="team" class="section">
     <h2 class="en">Our Team</h2>
     <h2 class="de">Unser Team</h2>
-    <!-- Team Members (hier unverändert einfügen, wie in deinem Code oben) -->
-    <!-- ... -->
+    
+    <!-- Deine Teammitglieder -->
+    <div class="team-member"><h3>David Luksic Lederer – CEO</h3><p class="en">David has over 20 years...</p><p class="de">David verfügt über mehr...</p><a href="mailto:David.Lederer@lanzvilleinvest.com">David.Lederer@lanzvilleinvest.com</a></div>
+    <div class="team-member"><h3>Benedit Moos – Co-Founder</h3><p class="en">Benedit is a visionary...</p><p class="de">Benedit ist ein visionärer...</p><a href="mailto:Benedit.Moos@lanzvilleinvest.com">Benedit.Moos@lanzvilleinvest.com</a></div>
+    <div class="team-member"><h3>Nathan Alexandrè Gaila – CFO</h3><p class="en">Nathan oversees financial operations...</p><p class="de">Nathan leitet die Finanzabteilung...</p><a href="mailto:Nathan.Gaila@lanzvilleinvest.com">Nathan.Gaila@lanzvilleinvest.com</a></div>
+    <div class="team-member"><h3>Sarah Schreiber – Lead Analyst</h3><p class="en">Sarah leads the research team...</p><p class="de">Sarah leitet das Forschungsteam...</p><a href="mailto:Sarah.Schreiber@lanzvilleinvest.com">Sarah.Schreiber@lanzvilleinvest.com</a></div>
+    <div class="team-member"><h3>Raymond Hattori – Head of Alternative Investment</h3><p class="en">Raymond brings expertise...</p><p class="de">Raymond verfügt über Erfahrung...</p><a href="mailto:Raymond.Hattori@lanzvilleinvest.com">Raymond.Hattori@lanzvilleinvest.com</a></div>
+    <div class="team-member"><h3>Alex Bonpensiero – Portfolio Manager</h3><p class="en">Alex manages multi-asset...</p><p class="de">Alex verwaltet Multi-Asset-Portfolios...</p><a href="mailto:Alex.Bonpensiero@lanzvilleinvest.com">Alex.Bonpensiero@lanzvilleinvest.com</a></div>
+    <div class="team-member"><h3>Cedrick Antoine Vogt – Risk Management</h3><p class="en">Cedrick oversees risk protocols...</p><p class="de">Cedrick verantwortet das Risikomanagement...</p><a href="mailto:Cedrick.Vogt@lanzvilleinvest.com">Cedrick.Vogt@lanzvilleinvest.com</a></div>
+    <div class="team-member"><h3>Richard Wallace – Partner</h3><p class="en">Richard is a seasoned partner...</p><p class="de">Richard ist ein erfahrener Partner...</p><a href="mailto:Richard.Wallace@lanzvilleinvest.com">Richard.Wallace@lanzvilleinvest.com</a></div>
+    <div class="team-member"><h3>David Ruggenau – Investor Relations</h3><p class="en">David manages communication...</p><p class="de">David verantwortet die Kommunikation...</p><a href="mailto:David.Ruggenau@lanzvilleinvest.com">David.Ruggenau@lanzvilleinvest.com</a></div>
   </section>
 
   <section id="portfolio" class="section">
     <h2 class="en">Our Portfolio</h2>
     <h2 class="de">Unser Portfolio</h2>
-    <p class="en">We invest with a long-term perspective...</p>
-    <p class="de">Wir investieren mit einem langfristigen Ansatz...</p>
-
     <div class="portfolio-grid">
-      <div class="portfolio-item">
-        <h3>Private Equity</h3>
-        <p class="en">Growth capital for family businesses and niche sectors.</p>
-        <p class="de">Wachstumskapital für Familienunternehmen und Nischenbranchen.</p>
-      </div>
-      <div class="portfolio-item">
-        <h3>Real Estate</h3>
-        <p class="en">Selective holdings in prime European and global markets.</p>
-        <p class="de">Selektive Beteiligungen an erstklassigen Immobilien.</p>
-      </div>
-      <div class="portfolio-item">
-        <h3>Crypto Assets</h3>
-        <p class="en">Blockchain-driven opportunities.</p>
-        <p class="de">Blockchain-getriebene Chancen.</p>
-      </div>
-      <div class="portfolio-item">
-        <h3>Bespoke Solutions</h3>
-        <p class="en">Tailored financial structures for clients.</p>
-        <p class="de">Maßgeschneiderte Finanzstrukturen.</p>
-      </div>
+      <div class="portfolio-item"><h3>Private Equity</h3><p class="en">Growth capital...</p><p class="de">Wachstumskapital...</p></div>
+      <div class="portfolio-item"><h3>Real Estate</h3><p class="en">Selective holdings...</p><p class="de">Selektive Beteiligungen...</p></div>
+      <div class="portfolio-item"><h3>Crypto Assets</h3><p class="en">Blockchain-driven...</p><p class="de">Blockchain-getriebene...</p></div>
+      <div class="portfolio-item"><h3>Bespoke Solutions</h3><p class="en">Tailored structures...</p><p class="de">Maßgeschneiderte...</p></div>
     </div>
+    <p class="en" style="margin-top: 2rem; font-style: italic;">Detailed portfolio info upon request.</p>
+    <p class="de" style="margin-top: 2rem; font-style: italic;">Detaillierte Infos auf Anfrage.</p>
   </section>
 
   <a href="mailto:Office@lanzvilleinvest.com" class="contact-btn">Contact</a>
-
   <footer>
     &copy; 1990–2025 LANZVILLE INVESTMENTS ANSTALT — Vaduz, Liechtenstein
   </footer>
 </div>
 
-<!-- SCRIPTS -->
 <script>
-  const introScreen = document.getElementById('intro-screen');
-  const mainContent = document.getElementById('main-content');
-  const enterBtn = document.getElementById('enter-site-btn');
-
-  enterBtn.addEventListener('click', () => {
-    introScreen.style.opacity = '0';
-    setTimeout(() => {
-      introScreen.style.display = 'none';
-      mainContent.style.display = 'block';
-    }, 800);
-  });
-
   function showSection(id) {
     document.querySelectorAll('.section').forEach(el => el.classList.remove('active'));
     document.getElementById(id).classList.add('active');
@@ -273,7 +246,13 @@
     document.querySelectorAll('.' + lang).forEach(el => el.style.display = 'block');
   }
 
-  setLang('en');
+  // Intro button logic
+  document.getElementById('enterBtn').addEventListener('click', function() {
+    document.getElementById('intro').style.display = 'none';
+    document.getElementById('mainContent').style.display = 'block';
+    setLang('en');
+    showSection('about');
+  });
 </script>
 
 </body>
