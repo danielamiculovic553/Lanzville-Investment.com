@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -69,6 +69,52 @@
     footer {
       text-align: center; padding: 1rem; background: #111; color: #999;
       font-size: 0.9rem; margin-top: 3rem;
+    }
+
+    /* COOKIE BANNER */
+    #cookie-banner {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(17, 17, 17, 0.95);
+      color: #e5e5e5;
+      padding: 1rem;
+      border-top: 2px solid #d4af37;
+      display: none;
+      z-index: 2000;
+      font-size: 0.95rem;
+    }
+    #cookie-content {
+      max-width: 900px;
+      margin: auto;
+    }
+    #cookie-banner h3 {
+      color: #d4af37;
+      margin-bottom: 0.5rem;
+    }
+    .cookie-buttons {
+      margin-top: 0.7rem;
+    }
+    .cookie-buttons button {
+      background: #d4af37;
+      color: #000;
+      border: none;
+      padding: 8px 15px;
+      margin-right: 10px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    .cookie-buttons button:hover {
+      background: #b8952f;
+    }
+    .cookie-buttons #decline-cookies {
+      background: #444;
+      color: #fff;
+    }
+    .cookie-buttons #decline-cookies:hover {
+      background: #666;
     }
   </style>
 </head>
@@ -191,7 +237,22 @@
   </footer>
 </div>
 
+<!-- COOKIE BANNER -->
+<div id="cookie-banner">
+  <div id="cookie-content">
+    <h3>Cookies & Datenschutz</h3>
+    <p>Wir verwenden Cookies, um Ihnen das bestmögliche Nutzererlebnis zu bieten und unsere Dienste zu verbessern. 
+       Weitere Informationen finden Sie in unserer <a href="#" onclick="showSection('privacy')">Datenschutzerklärung</a>.
+    </p>
+    <div class="cookie-buttons">
+      <button id="accept-cookies">Akzeptieren</button>
+      <button id="decline-cookies">Ablehnen</button>
+    </div>
+  </div>
+</div>
+
 <script>
+  // Intro Animation & Music
   const enterBtn = document.getElementById("enterBtn");
   const intro = document.getElementById("intro");
   const main = document.getElementById("main");
@@ -212,6 +273,23 @@
     document.querySelectorAll('.section').forEach(el => el.classList.remove('active'));
     document.getElementById(id).classList.add('active');
   }
+
+  // Cookie Banner Logic
+  document.addEventListener("DOMContentLoaded", () => {
+    if (!localStorage.getItem("cookieConsent")) {
+      document.getElementById("cookie-banner").style.display = "block";
+    }
+
+    document.getElementById("accept-cookies").addEventListener("click", () => {
+      localStorage.setItem("cookieConsent", "accepted");
+      document.getElementById("cookie-banner").style.display = "none";
+    });
+
+    document.getElementById("decline-cookies").addEventListener("click", () => {
+      localStorage.setItem("cookieConsent", "declined");
+      document.getElementById("cookie-banner").style.display = "none";
+    });
+  });
 </script>
 
 </body>
