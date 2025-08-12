@@ -6,184 +6,304 @@
   <title>LANZVILLE INVESTMENTS ANSTALT</title>
   <link rel="icon" href="https://i.postimg.cc/MGrtBnXp/IMG-6148.png" type="image/png">
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Helvetica Neue', sans-serif; background-color: #000; color: #e5e5e5; }
-    #intro { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: #000;
-      display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; z-index: 9999; }
-    #intro img { width: 180px; filter: drop-shadow(0 0 10px #d4af37); animation: pulse 2s infinite; }
-    @keyframes pulse { 0% { transform: scale(1);} 50% { transform: scale(1.05);} 100% { transform: scale(1);} }
-    #enter-btn { margin-top: 20px; padding: 12px 30px; font-size: 1rem; background-color: #d4af37; color: #000;
-      border: none; cursor: pointer; border-radius: 5px; transition: background 0.3s ease; }
-    #enter-btn:hover { background-color: #b8952f; }
-    .lang-switch { display: flex; gap: 10px; }
-    .lang-btn { padding: 8px 16px; border: none; background: #333; color: #fff; border-radius: 5px; cursor: pointer; }
-    .lang-btn:hover { background: #555; }
-    #mute-btn { position: absolute; top: 20px; right: 20px; background: #d4af37; color: #000;
-      border: none; padding: 8px 14px; font-size: 1.1rem; border-radius: 30px; cursor: pointer; z-index: 10000; }
-    #mute-btn:hover { background: #b8952f; }
-    header { display: none; justify-content: space-between; align-items: center; background: #111; padding: 1rem 2rem;
-      position: sticky; top: 0; z-index: 100; }
-    header img { height: 50px; }
-    header h1 { font-size: 1.5rem; color: #d4af37; }
-    nav { display: flex; align-items: center; gap: 1rem; }
-    nav a { color: #e5e5e5; text-decoration: none; font-weight: 500; }
-    nav a:hover { color: #d4af37; }
-    .section { display: none; padding: 2rem; }
-    #welcome { background-image: url('https://i.postimg.cc/nz0XnWBn/IMG-6188.jpg'); background-size: cover;
-      background-position: center; text-align: center; padding: 10rem 2rem; display: none; }
-    #welcome h2 { font-size: 2.5rem; color: #fff; text-shadow: 0 0 10px #000; }
-    #welcome p { margin-top: 1rem; font-size: 1.2rem; max-width: 600px; margin-left: auto; margin-right: auto;
-      color: #eee; text-shadow: 0 0 5px #000; }
-    .team-member { border-bottom: 1px solid #333; padding: 1rem 0; }
-    .team-member h3 { color: #d4af37; margin-bottom: 0.3rem; }
-    .team-member a { color: #d4af37; text-decoration: none; display: inline-block; margin-top: 0.5rem; }
-    .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2rem; margin-top: 2rem; }
-    .portfolio-item { border: 1px solid #333; padding: 1.5rem; background: #111; transition: transform 0.3s ease, border-color 0.3s ease; }
-    .portfolio-item:hover { transform: translateY(-8px) scale(1.02); border-color: #d4af37; }
-    .portfolio-item h3 { color: #d4af37; }
-    footer { text-align: center; padding: 1rem; background: #111; color: #999; font-size: 0.9rem; margin-top: 3rem; }
-    .contact-btn { display: none; position: fixed; bottom: 20px; right: 20px; padding: 10px 16px; background-color: #d4af37;
-      color: #000; font-weight: bold; border: none; border-radius: 30px; cursor: pointer; z-index: 999;
-      text-decoration: none; animation: fadeIn 1.2s ease-in-out forwards; }
-    .contact-btn:hover { background-color: #b8952f; }
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(20px);} to { opacity: 1; transform: translateY(0);} }
-    #cookie-banner { position: fixed; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.95); color: #fff;
-      padding: 15px; display: none; z-index: 10000; text-align: center; }
-    #cookie-banner button { margin-left: 10px; padding: 8px 16px; border: none; border-radius: 5px; cursor: pointer; }
-    #cookie-accept { background-color: #d4af37; color: #000; }
-    #cookie-decline { background-color: #555; color: #fff; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Helvetica Neue', sans-serif;
+      background-color: #000;
+      color: #e5e5e5;
+      overflow-x: hidden;
+    }
+
+    /* --- INTRO --- */
+    #intro {
+      height: 100vh;
+      background-color: #000;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.8s ease;
+    }
+
+    #intro img {
+      width: 180px;
+      filter: drop-shadow(0 0 10px #d4af37);
+      transform: scale(1);
+      transition: transform 0.5s ease;
+    }
+
+    #intro img:hover {
+      transform: scale(1.05);
+    }
+
+    #enter-btn {
+      margin-top: 2rem;
+      padding: 0.6rem 1.5rem;
+      font-size: 1rem;
+      font-weight: bold;
+      background-color: #d4af37;
+      color: #000;
+      border: none;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: background 0.3s ease;
+    }
+
+    #enter-btn:hover {
+      background-color: #b8952f;
+    }
+
+    /* --- MAIN CONTENT --- */
+    #main-content {
+      display: none;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #111;
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+    }
+
+    header img {
+      height: 50px;
+    }
+
+    header h1 {
+      font-size: 1.5rem;
+      color: #d4af37;
+      margin-left: 10px;
+    }
+
+    nav a {
+      color: #e5e5e5;
+      margin-left: 1.5rem;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #d4af37;
+    }
+
+    .section {
+      padding: 4rem 2rem;
+    }
+
+    /* --- WELCOME SECTION --- */
+    #welcome {
+      background: url('https://i.postimg.cc/nz0XnWBn/IMG-6188.jpg') no-repeat center center/cover;
+      text-align: center;
+      color: #fff;
+      padding: 6rem 2rem;
+    }
+
+    #welcome h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      text-shadow: 0 0 10px #000;
+    }
+
+    #welcome p {
+      max-width: 700px;
+      margin: 0 auto;
+      font-size: 1.2rem;
+      background-color: rgba(0,0,0,0.5);
+      padding: 1rem;
+      border-radius: 8px;
+    }
+
+    /* --- TEAM SECTION --- */
+    #team h2 {
+      text-align: center;
+      color: #d4af37;
+      margin-bottom: 2rem;
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .team-card {
+      background: #111;
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid #333;
+      box-shadow: 0 0 15px rgba(0,0,0,0.5);
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+
+    .team-card:hover {
+      transform: translateY(-5px);
+      border-color: #d4af37;
+    }
+
+    .team-card h3 {
+      color: #d4af37;
+      margin-bottom: 0.5rem;
+    }
+
+    .team-card p {
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    .team-card a {
+      display: inline-block;
+      margin-top: 0.5rem;
+      color: #d4af37;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    /* --- FOOTER --- */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background: #111;
+      font-size: 0.9rem;
+      color: #888;
+    }
   </style>
 </head>
 <body>
 
-<div id="intro">
-  <img src="https://i.postimg.cc/MGrtBnXp/IMG-6148.png" alt="Logo">
+<!-- INTRO SCREEN -->
+<section id="intro">
+  <img src="https://i.postimg.cc/MGrtBnXp/IMG-6148.png" alt="Logo" />
   <button id="enter-btn">Enter</button>
-</div>
+</section>
 
-<header id="main-header">
-  <div style="display: flex; align-items: center;">
-    <img src="https://i.postimg.cc/MGrtBnXp/IMG-6148.png" alt="Logo">
-    <h1>LANZVILLE INVESTMENTS</h1>
-  </div>
-  <nav>
-    <a href="#welcome" data-de="Startseite" data-en="Home">Home</a>
-    <a href="#about" data-de="Über uns" data-en="About">About</a>
-    <a href="#team" data-de="Team" data-en="Team">Team</a>
-    <a href="#portfolio" data-de="Portfolio" data-en="Portfolio">Portfolio</a>
-    <a href="#privacy" data-de="Datenschutz" data-en="Privacy">Privacy</a>
-    <div class="lang-switch">
-      <button class="lang-btn" data-lang="en">EN</button>
-      <button class="lang-btn" data-lang="de">DE</button>
+<!-- MAIN CONTENT -->
+<div id="main-content">
+
+  <!-- HEADER -->
+  <header>
+    <div style="display: flex; align-items: center;">
+      <img src="https://i.postimg.cc/MGrtBnXp/IMG-6148.png" alt="Logo">
+      <h1>LANZVILLE INVESTMENTS ANSTALT</h1>
     </div>
-  </nav>
-</header>
+    <nav>
+      <a href="#welcome">Home</a>
+      <a href="#about">About Us</a>
+      <a href="#team">Our Team</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#privacy">Privacy</a>
+    </nav>
+  </header>
 
-<section id="welcome">
-  <h2 data-de="Willkommen bei Lanzville Investments" data-en="Welcome to Lanzville Investments">Welcome to Lanzville Investments</h2>
-  <p data-de="Wir sind eine in Liechtenstein ansässige Investmentfirma spezialisiert auf Private Equity, Immobilien und Krypto-Assets." 
-     data-en="We are a Liechtenstein-based investment firm specializing in Private Equity, Real Estate, and Crypto Assets.">
-    We are a Liechtenstein-based investment firm specializing in Private Equity, Real Estate, and Crypto Assets.
-  </p>
-</section>
+  <!-- WELCOME -->
+  <section id="welcome">
+    <h2>Welcome to Lanzville Investment</h2>
+    <p>We are a boutique investment firm based in Liechtenstein, focused on long-term value creation through private equity, real estate, crypto assets, and bespoke financial strategies. Explore our vision, our people, and our mission.</p>
+  </section>
 
-<section id="about" class="section">
-  <h2 data-de="Über uns" data-en="About Us">About Us</h2>
-  <p data-de="Gegründet 1990, LANZVILLE INVESTMENTS ANSTALT hat sich einen Ruf für ..." 
-     data-en="Founded in 1990, LANZVILLE INVESTMENTS ANSTALT has built a reputation for ...">
-    Founded in 1990, LANZVILLE INVESTMENTS ANSTALT has built a reputation for ...
-  </p>
-</section>
+  <!-- ABOUT -->
+  <section id="about" class="section">
+    <h2>About Us</h2>
+    <p>LANZVILLE INVESTMENTS ANSTALT is a private investment company founded in 1990. With over three decades of experience, our approach is focused on sustainable and innovative capital deployment across global markets.</p>
+  </section>
 
-<section id="team" class="section">
-  <h2 data-de="Unser Team" data-en="Our Team">Our Team</h2>
-  <div class="team-member"><h3>David Luksic Lederer – CEO</h3><p>Over 20 years of global wealth management experience.</p><a href="mailto:David.Lederer@lanzvilleinvest.com">David.Lederer@lanzvilleinvest.com</a></div>
-  <div class="team-member"><h3>Benedit Moos – Co-Founder</h3><p>Visionary entrepreneur in alternative assets.</p><a href="mailto:Benedit.Moos@lanzvilleinvest.com">Benedit.Moos@lanzvilleinvest.com</a></div>
-  <div class="team-member"><h3>Nathan Alexandrè Gaila – CFO & Legal Advisor</h3><p>Heads financial operations, legal consulting, and compliance.</p><a href="mailto:Nathan.Gaila@lanzvilleinvest.com">Nathan.Gaila@lanzvilleinvest.com</a></div>
-  <div class="team-member"><h3>Sarah Schreiber – Lead Analyst</h3><p>Market research and global trends.</p><a href="mailto:Sarah.Schreiber@lanzvilleinvest.com">Sarah.Schreiber@lanzvilleinvest.com</a></div>
-</section>
+  <!-- TEAM -->
+  <section id="team" class="section">
+    <h2>Our Team</h2>
+    <div class="team-grid">
+      <div class="team-card">
+        <h3>David Luksic Lederer – CEO</h3>
+        <p>Over 20 years in wealth management, David leads the strategic direction of the firm.</p>
+        <a href="mailto:David.Lederer@lanzvilleinvest.com">Contact</a>
+      </div>
+      <div class="team-card">
+        <h3>Benedit Moos – Co-Founder</h3>
+        <p>Visionary entrepreneur who co-founded Lanzville, focused on alternative asset strategies.</p>
+        <a href="mailto:Benedit.Moos@lanzvilleinvest.com">Contact</a>
+      </div>
+      <div class="team-card">
+        <h3>Nathan Alexandrè Gaila – CFO</h3>
+        <p>Leads financial operations and ensures compliance in all jurisdictions.</p>
+        <a href="mailto:Nathan.Gaila@lanzvilleinvest.com">Contact</a>
+      </div>
+      <div class="team-card">
+        <h3>Sarah Schreiber – Lead Analyst</h3>
+        <p>Heads market research and provides insight into global trends and opportunities.</p>
+        <a href="mailto:Sarah.Schreiber@lanzvilleinvest.com">Contact</a>
+      </div>
+      <div class="team-card">
+        <h3>Raymond Hattori – Head of Alternative Investment</h3>
+        <p>Expert in crypto assets and modern investment strategies with a risk-focused approach.</p>
+        <a href="mailto:Raymond.Hattori@lanzvilleinvest.com">Contact</a>
+      </div>
+      <div class="team-card">
+        <h3>Alex Bonpensiero – Portfolio Manager</h3>
+        <p>Manages multi-asset portfolios tailored to individual client needs.</p>
+        <a href="mailto:Alex.Bonpensiero@lanzvilleinvest.com">Contact</a>
+      </div>
+      <div class="team-card">
+        <h3>Cedrick Antoine Vogt – Risk Management</h3>
+        <p>Ensures capital preservation through structured risk protocols.</p>
+        <a href="mailto:Cedrick.Vogt@lanzvilleinvest.com">Contact</a>
+      </div>
+      <div class="team-card">
+        <h3>Richard Wallace – Partner</h3>
+        <p>Decades of experience in private equity and global financial operations.</p>
+        <a href="mailto:Richard.Wallace@lanzvilleinvest.com">Contact</a>
+      </div>
+      <div class="team-card">
+        <h3>David Ruggenau – Investor Relations</h3>
+        <p>Maintains client relationships and manages investor communications.</p>
+        <a href="mailto:David.Ruggenau@lanzvilleinvest.com">Contact</a>
+      </div>
+    </div>
+  </section>
 
-<section id="portfolio" class="section">
-  <h2 data-de="Unser Portfolio" data-en="Our Portfolio">Our Portfolio</h2>
-  <div class="portfolio-grid">
-    <div class="portfolio-item"><h3 data-de="Private Equity" data-en="Private Equity">Private Equity</h3><p data-de="Wachstumskapital für Familienunternehmen." data-en="Growth capital for family businesses.">Growth capital for family businesses.</p></div>
-    <div class="portfolio-item"><h3 data-de="Immobilien" data-en="Real Estate">Real Estate</h3><p data-de="Premium-Immobilien in Europa." data-en="Premium properties in Europe.">Premium properties in Europe.</p></div>
-    <div class="portfolio-item"><h3 data-de="Krypto Assets" data-en="Crypto Assets">Crypto Assets</h3><p data-de="Blockchain-Innovation mit Compliance." data-en="Blockchain innovation with compliance.">Blockchain innovation with compliance.</p></div>
-  </div>
-</section>
+  <!-- PORTFOLIO -->
+  <section id="portfolio" class="section">
+    <h2>Portfolio</h2>
+    <ul>
+      <li><strong>Private Equity:</strong> Strategic growth capital for family businesses.</li>
+      <li><strong>Real Estate:</strong> Holdings in prime international property markets.</li>
+      <li><strong>Crypto Assets:</strong> Blockchain-based innovation and digital finance.</li>
+      <li><strong>Bespoke Solutions:</strong> Tailored structures for complex financial needs.</li>
+    </ul>
+  </section>
 
-<section id="privacy" class="section">
-  <h2 data-de="Datenschutz" data-en="Privacy Policy">Privacy Policy</h2>
-  <p data-de="Wir respektieren Ihre Privatsphäre. Keine Datenerfassung ohne Zustimmung." data-en="We respect your privacy. No data is collected without consent.">
-    We respect your privacy. No data is collected without consent.
-  </p>
-</section>
+  <!-- PRIVACY -->
+  <section id="privacy" class="section">
+    <h2>Privacy Policy</h2>
+    <p>All information shared with LANZVILLE INVESTMENTS ANSTALT is handled with strict confidentiality. Our practices are GDPR-compliant and ensure your data remains protected.</p>
+  </section>
 
-<a href="mailto:Office@lanzvilleinvest.com" class="contact-btn" id="contact-btn">Contact Us</a>
+  <!-- FOOTER -->
+  <footer>
+    &copy; 1990–2025 LANZVILLE INVESTMENTS ANSTALT — Vaduz, Liechtenstein
+  </footer>
 
-<div id="cookie-banner">
-  <span data-de="Wir verwenden Cookies, um Ihre Erfahrung zu verbessern." data-en="We use cookies to improve your experience.">We use cookies to improve your experience.</span>
-  <button id="cookie-accept" data-de="Akzeptieren" data-en="Accept">Accept</button>
-  <button id="cookie-decline" data-de="Ablehnen" data-en="Decline">Decline</button>
 </div>
 
-<footer>&copy; 1990–2025 LANZVILLE INVESTMENTS ANSTALT — Vaduz, Liechtenstein</footer>
-
-<audio id="bg-music" src="music.mp3" preload="auto" loop></audio>
-
+<!-- SCRIPT -->
 <script>
-  const music = document.getElementById('bg-music');
-  const muteBtn = document.createElement('button');
-  muteBtn.id = "mute-btn";
-  muteBtn.textContent = "🔊";
-  muteBtn.style.display = "none";
-  document.body.appendChild(muteBtn);
+  const enterBtn = document.getElementById("enter-btn");
+  const intro = document.getElementById("intro");
+  const main = document.getElementById("main-content");
 
-  document.getElementById('enter-btn').addEventListener('click', () => {
-    document.getElementById('intro').style.display = 'none';
-    document.getElementById('main-header').style.display = 'flex';
-    document.getElementById('welcome').style.display = 'block';
-    document.querySelectorAll('.section').forEach(s => s.style.display = 'block');
-    document.getElementById('contact-btn').style.display = 'inline-block';
-    document.getElementById('cookie-banner').style.display = 'block';
-    muteBtn.style.display = "block";
-    music.volume = 0;
-    music.play();
-    fadeInVolume();
-  });
-
-  function fadeInVolume() {
-    let vol = 0;
-    const fade = setInterval(() => {
-      if (vol < 1) {
-        vol += 0.1;
-        music.volume = vol;
-      } else {
-        clearInterval(fade);
-      }
-    }, 300);
-  }
-
-  muteBtn.addEventListener('click', () => {
-    if (music.muted) {
-      music.muted = false;
-      muteBtn.textContent = "🔊";
-    } else {
-      music.muted = true;
-      muteBtn.textContent = "🔇";
-    }
-  });
-
-  document.getElementById('cookie-accept').onclick = () => { document.getElementById('cookie-banner').style.display = 'none'; };
-  document.getElementById('cookie-decline').onclick = () => { document.getElementById('cookie-banner').style.display = 'none'; };
-
-  document.querySelectorAll('.lang-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const lang = btn.dataset.lang;
-      document.querySelectorAll('[data-' + lang + ']').forEach(el => {
-        el.textContent = el.getAttribute('data-' + lang);
-      });
-    });
+  enterBtn.addEventListener("click", () => {
+    intro.style.opacity = "0";
+    setTimeout(() => {
+      intro.style.display = "none";
+      main.style.display = "block";
+    }, 800);
   });
 </script>
 
