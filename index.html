@@ -1,296 +1,386 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>LANZVILLE INVESTMENTS ANSTALT</title>
-  <link rel="icon" href="https://i.postimg.cc/MGrtBnXp/IMG-6148.png" type="image/png">
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Helvetica Neue', sans-serif; background-color: #000; color: #e5e5e5; overflow-x: hidden; }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>LANZVILLE INVESTMENTS ANSTALT</title>
+<link rel="icon" href="https://i.postimg.cc/MGrtBnXp/IMG-6148.png" type="image/png" />
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body {
+    font-family: 'Helvetica Neue', sans-serif;
+    background-color: #000;
+    color: #e5e5e5;
+    overflow-x: hidden;
+  }
+  #intro {
+    height: 100vh; width: 100%;
+    background-color: #000;
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    position: relative; z-index: 10;
+  }
+  #intro img {
+    height: 100px;
+    animation: pulse 2s infinite ease-in-out;
+    filter: drop-shadow(0 0 15px #d4af37);
+  }
+  @keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+  }
+  #intro button {
+    margin-top: 30px;
+    padding: 10px 25px;
+    font-size: 1rem;
+    background-color: #d4af37;
+    color: #000;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+  }
+  #intro button:hover {
+    background-color: #b8952f;
+  }
 
-    /* INTRO SECTION */
-    #intro {
-      height: 100vh; width: 100%; background-color: #000;
-      display: flex; flex-direction: column; justify-content: center; align-items: center;
-      transition: opacity 0.8s ease; position: relative; z-index: 10;
-    }
-    #intro img { height: 100px; animation: pulse 2s infinite ease-in-out; filter: drop-shadow(0 0 15px #d4af37); }
-    @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
-    #intro button {
-      margin-top: 30px; padding: 10px 25px; font-size: 1rem;
-      background-color: #d4af37; color: #000; border: none; cursor: pointer; border-radius: 5px;
-      transition: background 0.3s ease;
-    }
-    #intro button:hover { background-color: #b8952f; }
+  #main {
+    display: none;
+    background-color: #000;
+  }
 
-    /* MAIN CONTENT */
-    #main { display: none; background-color: #000; }
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #111;
+    padding: 1rem 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  header img {
+    height: 50px;
+    margin-right: 10px;
+  }
+  header h1 {
+    font-size: 1.5rem;
+    color: #d4af37;
+  }
+  nav a {
+    color: #e5e5e5;
+    margin-left: 1.5rem;
+    text-decoration: none;
+    font-weight: 500;
+    cursor: pointer;
+    transition: color 0.3s ease;
+  }
+  nav a:hover {
+    color: #d4af37;
+  }
+  .lang-switch {
+    display: flex;
+    align-items: center;
+  }
+  .lang-switch button {
+    background: none;
+    border: 1px solid #d4af37;
+    color: #d4af37;
+    margin-left: 10px;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-weight: 600;
+    transition: background 0.3s ease;
+  }
+  .lang-switch button:hover {
+    background: #d4af37;
+    color: #000;
+  }
 
-    /* NAVIGATION */
-    header {
-      display: flex; justify-content: space-between; align-items: center;
-      background: #111; padding: 1rem 2rem; position: sticky; top: 0; z-index: 100;
-    }
-    header img { height: 50px; margin-right: 10px; }
-    header h1 { font-size: 1.5rem; color: #d4af37; }
-    nav a {
-      color: #e5e5e5; margin-left: 1.5rem; text-decoration: none; font-weight: 500; cursor: pointer;
-      transition: color 0.3s ease;
-    }
-    nav a:hover { color: #d4af37; }
+  .section {
+    padding: 3rem 2rem;
+    display: none;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .section.active {
+    display: block;
+  }
 
-    .section { padding: 3rem 2rem; display: none; }
-    .section.active { display: block; }
+  #welcome {
+    background: url('https://i.postimg.cc/nz0XnWBn/IMG-6188.jpg') center center / cover no-repeat;
+    text-align: center;
+    padding: 7rem 2rem;
+  }
+  #welcome h2 {
+    font-size: 2.5rem;
+    color: #fff;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 5px #000;
+  }
+  #welcome p {
+    max-width: 700px;
+    margin: 0 auto;
+    font-size: 1.2rem;
+    color: #ccc;
+    text-shadow: 1px 1px 3px #000;
+  }
 
-    /* HERO / WELCOME SECTION */
-    #welcome {
-      background: url('https://i.postimg.cc/nz0XnWBn/IMG-6188.jpg') center center / cover no-repeat;
-      text-align: center; padding: 7rem 2rem;
-    }
-    #welcome h2 {
-      font-size: 2.5rem; color: #fff; margin-bottom: 1rem;
-      text-shadow: 2px 2px 5px #000;
-    }
-    #welcome p {
-      max-width: 700px; margin: 0 auto; font-size: 1.2rem; color: #ccc;
-      text-shadow: 1px 1px 3px #000;
-    }
+  .team-member {
+    border-left: 4px solid #d4af37;
+    padding: 1rem;
+    margin-bottom: 2rem;
+    background-color: #111;
+    box-shadow: 0 0 10px rgba(0,0,0,0.4);
+  }
+  .team-member h3 {
+    color: #d4af37;
+    margin-bottom: 0.5rem;
+  }
+  .team-member p {
+    margin-bottom: 0.3rem;
+  }
+  .team-member a {
+    color: #d4af37;
+    text-decoration: none;
+  }
 
-    /* TEAM SECTION */
-    .team-member {
-      border-left: 4px solid #d4af37; padding: 1rem; margin-bottom: 2rem;
-      background-color: #111; box-shadow: 0 0 10px rgba(0,0,0,0.4);
-    }
-    .team-member h3 { color: #d4af37; margin-bottom: 0.5rem; }
-    .team-member p { margin-bottom: 0.3rem; }
-    .team-member a { color: #d4af37; text-decoration: none; }
+  footer {
+    text-align: center;
+    padding: 1rem;
+    background: #111;
+    color: #999;
+    font-size: 0.9rem;
+    margin-top: 3rem;
+  }
 
-    footer {
-      text-align: center; padding: 1rem; background: #111; color: #999;
-      font-size: 0.9rem; margin-top: 3rem;
-    }
-
-    /* COOKIE BANNER */
-    #cookie-banner {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: rgba(17, 17, 17, 0.95);
-      color: #e5e5e5;
-      padding: 1rem;
-      border-top: 2px solid #d4af37;
-      display: none;
-      z-index: 2000;
-      font-size: 0.95rem;
-    }
-    #cookie-content {
-      max-width: 900px;
-      margin: auto;
-    }
-    #cookie-banner h3 {
-      color: #d4af37;
-      margin-bottom: 0.5rem;
-    }
-    .cookie-buttons {
-      margin-top: 0.7rem;
-    }
-    .cookie-buttons button {
-      background: #d4af37;
-      color: #000;
-      border: none;
-      padding: 8px 15px;
-      margin-right: 10px;
-      border-radius: 4px;
-      cursor: pointer;
-      transition: background 0.3s ease;
-    }
-    .cookie-buttons button:hover {
-      background: #b8952f;
-    }
-    .cookie-buttons #decline-cookies {
-      background: #444;
-      color: #fff;
-    }
-    .cookie-buttons #decline-cookies:hover {
-      background: #666;
-    }
-  </style>
+  /* COOKIE BANNER */
+  #cookie-banner {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.95);
+    color: #e5e5e5;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+  #cookie-content {
+    max-width: 420px;
+    background: #111;
+    border: 2px solid #d4af37;
+    border-radius: 10px;
+    padding: 25px;
+    text-align: center;
+    font-size: 1rem;
+    line-height: 1.4;
+  }
+  #cookie-content h3 {
+    margin-bottom: 15px;
+    color: #d4af37;
+  }
+  #cookie-buttons {
+    margin-top: 20px;
+  }
+  #cookie-buttons button {
+    cursor: pointer;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: 600;
+    margin: 0 10px;
+    transition: background-color 0.3s ease;
+  }
+  #accept-cookies {
+    background: #d4af37;
+    color: #000;
+  }
+  #accept-cookies:hover {
+    background: #b8952f;
+  }
+  #decline-cookies {
+    background: #444;
+    color: #fff;
+  }
+  #decline-cookies:hover {
+    background: #222;
+  }
+</style>
 </head>
 <body>
 
 <!-- INTRO SECTION -->
-<div id="intro">
-  <img src="https://i.postimg.cc/MGrtBnXp/IMG-6148.png" alt="Logo" />
-  <button id="enterBtn">Enter</button>
-</div>
-
-<!-- MAIN CONTENT -->
-<div id="main">
-
-  <!-- HEADER -->
-  <header>
-    <div style="display: flex; align-items: center;">
-      <img src="https://i.postimg.cc/MGrtBnXp/IMG-6148.png" alt="Logo" />
-      <h1>LANZVILLE INVESTMENTS ANSTALT</h1>
-    </div>
-    <nav>
-      <a onclick="showSection('about')">About Us</a>
-      <a onclick="showSection('team')">Our Team</a>
-      <a onclick="showSection('portfolio')">Portfolio</a>
-      <a onclick="showSection('privacy')">Privacy Policy</a>
-    </nav>
-  </header>
-
-  <!-- WELCOME -->
-  <section id="welcome" class="section active">
-    <h2>Welcome to LANZVILLE INVESTMENTS</h2>
-    <p>We are a private investment company based in Liechtenstein, focused on long-term value creation through private equity, real estate, crypto assets and bespoke financial solutions.</p>
-  </section>
-
-  <!-- ABOUT -->
-  <section id="about" class="section">
-    <h2>About Us</h2>
-    <p>Founded in 1990, LANZVILLE INVESTMENTS ANSTALT has operated discreetly at the crossroads of tradition and innovation. We pursue value through selective investments and tailored financial strategies.</p>
-  </section>
-
-  <!-- TEAM -->
-  <section id="team" class="section">
-    <h2>Our Team</h2>
-
-    <div class="team-member">
-      <h3>David Luksic Lederer – CEO</h3>
-      <p>Over 20 years of experience in global wealth management and strategic leadership.</p>
-      <a href="mailto:David.Lederer@lanzvilleinvest.com">David.Lederer@lanzvilleinvest.com</a>
-    </div>
-
-    <div class="team-member">
-      <h3>Benedit Moos – Co-Founder</h3>
-      <p>Visionary entrepreneur focused on alternative asset strategies and sustainable growth.</p>
-      <a href="mailto:Benedit.Moos@lanzvilleinvest.com">Benedit.Moos@lanzvilleinvest.com</a>
-    </div>
-
-    <div class="team-member">
-      <h3>Nathan Alexandrè Gaila – CFO & Legal Counsel</h3>
-      <p>Leads financial operations and ensures regulatory compliance. Also serves as a lawyer for our clients, having completed his law degree in Switzerland with the highest honors.</p>
-      <a href="mailto:Nathan.Gaila@lanzvilleinvest.com">Nathan.Gaila@lanzvilleinvest.com</a>
-    </div>
-
-    <div class="team-member">
-      <h3>Sarah Schreiber – Lead Analyst</h3>
-      <p>Heads market research and investment trend analysis.</p>
-      <a href="mailto:Sarah.Schreiber@lanzvilleinvest.com">Sarah.Schreiber@lanzvilleinvest.com</a>
-    </div>
-
-    <div class="team-member">
-      <h3>Raymond Hattori – Head of Alternative Investment</h3>
-      <p>Expert in crypto assets and innovative financial instruments.</p>
-      <a href="mailto:Raymond.Hattori@lanzvilleinvest.com">Raymond.Hattori@lanzvilleinvest.com</a>
-    </div>
-
-    <div class="team-member">
-      <h3>Alex Bonpensiero – Portfolio Manager</h3>
-      <p>Manages multi-asset portfolios and custom investment strategies.</p>
-      <a href="mailto:Alex.Bonpensiero@lanzvilleinvest.com">Alex.Bonpensiero@lanzvilleinvest.com</a>
-    </div>
-
-    <div class="team-member">
-      <h3>Cedrick Antoine Vogt – Risk Management</h3>
-      <p>Responsible for cross-asset risk analysis and capital protection strategies.</p>
-      <a href="mailto:Cedrick.Vogt@lanzvilleinvest.com">Cedrick.Vogt@lanzvilleinvest.com</a>
-    </div>
-
-    <div class="team-member">
-      <h3>Richard Wallace – Partner</h3>
-      <p>Seasoned private equity partner with decades of experience in global markets.</p>
-      <a href="mailto:Richard.Wallace@lanzvilleinvest.com">Richard.Wallace@lanzvilleinvest.com</a>
-    </div>
-
-    <div class="team-member">
-      <h3>David Ruggenau – Investor Relations</h3>
-      <p>Oversees communication with investors and long-term relationship development.</p>
-      <a href="mailto:David.Ruggenau@lanzvilleinvest.com">David.Ruggenau@lanzvilleinvest.com</a>
-    </div>
-  </section>
-
-  <!-- PORTFOLIO -->
-  <section id="portfolio" class="section">
-    <h2>Our Portfolio</h2>
-    <p>We invest across select industries and innovative assets:</p>
-    <ul>
-      <li><strong>Private Equity</strong> – Growth capital for family businesses and niche sectors.</li>
-      <li><strong>Real Estate</strong> – Holdings in prime European and global markets.</li>
-      <li><strong>Crypto Assets</strong> – Blockchain-driven opportunities with disciplined risk control.</li>
-      <li><strong>Bespoke Solutions</strong> – Tailored financial structures for complex needs.</li>
-    </ul>
-  </section>
-
-  <!-- PRIVACY POLICY -->
-  <section id="privacy" class="section">
-    <h2>Privacy Policy</h2>
-    <p>This website does not collect or store personal data. Communication occurs only via direct inquiry. For more information, please contact us directly.</p>
-  </section>
-
-  <footer>
-    &copy; 1990–2025 LANZVILLE INVESTMENTS ANSTALT — Vaduz, Liechtenstein
-  </footer>
+<div id="intro" role="main" aria-label="Intro-Seite">
+  <img src="https://i.postimg.cc/MGrtBnXp/IMG-6148.png" alt="LANZVILLE Logo" />
+  <button id="enterBtn" data-i18n="enter" aria-label="Seite betreten">Betreten</button>
 </div>
 
 <!-- COOKIE BANNER -->
-<div id="cookie-banner">
+<div id="cookie-banner" role="dialog" aria-modal="true" aria-labelledby="cookie-title" aria-describedby="cookie-desc">
   <div id="cookie-content">
-    <h3>Cookies & Datenschutz</h3>
-    <p>Wir verwenden Cookies, um Ihnen das bestmögliche Nutzererlebnis zu bieten und unsere Dienste zu verbessern. 
-       Weitere Informationen finden Sie in unserer <a href="#" onclick="showSection('privacy')">Datenschutzerklärung</a>.
+    <h3 id="cookie-title" data-i18n="cookie_title">Cookies & Datenschutz</h3>
+    <p id="cookie-desc" data-i18n="cookie_text">
+      Wir verwenden Cookies, um Ihnen das beste Nutzererlebnis zu bieten.
     </p>
-    <div class="cookie-buttons">
-      <button id="accept-cookies">Akzeptieren</button>
-      <button id="decline-cookies">Ablehnen</button>
+    <div id="cookie-buttons">
+      <button id="accept-cookies" data-i18n="cookie_accept" aria-label="Cookies akzeptieren">Akzeptieren</button>
+      <button id="decline-cookies" data-i18n="cookie_decline" aria-label="Cookies ablehnen">Ablehnen</button>
     </div>
   </div>
 </div>
 
+<!-- MAIN CONTENT -->
+<div id="main" role="main" aria-label="Hauptinhalt">
+
+  <!-- HEADER -->
+  <header>
+    <div style="display: flex; align-items: center;">
+      <img src="https://i.postimg.cc/MGrtBnXp/IMG-6148.png" alt="LANZVILLE Logo" />
+      <h1 data-i18n="title">LANZVILLE INVESTMENTS ANSTALT</h1>
+    </div>
+    <nav aria-label="Hauptnavigation">
+      <a href="#" onclick="showSection('welcome');return false;" data-i18n="welcome" tabindex="0">Willkommen</a>
+      <a href="#" onclick="showSection('about');return false;" data-i18n="about" tabindex="0">Über uns</a>
+      <a href="#" onclick="showSection('team');return false;" data-i18n="team" tabindex="0">Unser Team</a>
+      <a href="#" onclick="showSection('portfolio');return false;" data-i18n="portfolio" tabindex="0">Portfolio</a>
+      <a href="#" onclick="showSection('privacy');return false;" data-i18n="privacy" tabindex="0">Datenschutz</a>
+    </nav>
+    <div class="lang-switch" aria-label="Sprache wechseln">
+      <button type="button" id="btn-de" aria-pressed="true" onclick="setLanguage('de')">DE</button>
+      <button type="button" id="btn-en" aria-pressed="false" onclick="setLanguage('en')">EN</button>
+    </div>
+  </header>
+
+  <!-- SECTIONS -->
+  <section id="welcome" class="section active" tabindex="0" aria-label="Willkommensbereich">
+    <h2 data-i18n="welcome_heading">Willkommen bei LANZVILLE INVESTMENTS</h2>
+    <p data-i18n="welcome_text">Wir sind eine private Investmentgesellschaft mit Sitz in Liechtenstein, fokussiert auf langfristige Wertschöpfung durch Private Equity, Immobilien, Krypto-Assets und maßgeschneiderte Finanzlösungen.</p>
+  </section>
+
+  <section id="about" class="section" tabindex="0" aria-label="Über uns">
+    <h2 data-i18n="about_heading">Über uns</h2>
+    <p data-i18n="about_text">Gegründet 1990 operiert LANZVILLE INVESTMENTS ANSTALT diskret an der Schnittstelle von Tradition und Innovation. Wir verfolgen Wert durch selektive Investitionen und maßgeschneiderte Finanzstrategien.</p>
+  </section>
+
+  <section id="team" class="section" tabindex="0" aria-label="Unser Team">
+    <h2 data-i18n="team_heading">Unser Team</h2>
+    <div class="team-member">
+      <h3>David Luksic Lederer – CEO</h3>
+      <p>Über 20 Jahre Erfahrung in globalem Wealth Management und strategischer Führung.</p>
+      <a href="mailto:David.Lederer@lanzvilleinvest.com">David.Lederer@lanzvilleinvest.com</a>
+    </div>
+    <div class="team-member">
+      <h3>Benedit Moos – Co-Founder</h3>
+      <p>Visionärer Unternehmer mit Fokus auf alternative Asset-Strategien und nachhaltigem Wachstum.</p>
+      <a href="mailto:Benedit.Moos@lanzvilleinvest.com">Benedit.Moos@lanzvilleinvest.com</a>
+    </div>
+    <div class="team-member">
+      <h3>Nathan Alexandrè Gaila – CFO & Legal Counsel</h3>
+      <p>Leitet Finanzoperationen und sorgt für regulatorische Compliance. Jurist mit Auszeichnung in der Schweiz.</p>
+      <a href="mailto:Nathan.Gaila@lanzvilleinvest.com">Nathan.Gaila@lanzvilleinvest.com</a>
+    </div>
+    <div class="team-member">
+      <h3>Sarah Schreiber – Lead Analyst</h3>
+      <p>Leitet Markt- und Investmenttrend-Analysen.</p>
+      <a href="mailto:Sarah.Schreiber@lanzvilleinvest.com">Sarah.Schreiber@lanzvilleinvest.com</a>
+    </div>
+    <div class="team-member">
+      <h3>Raymond Hattori – Head of Alternative Investment</h3>
+      <p>Experte für Krypto-Assets und innovative Finanzinstrumente.</p>
+      <a href="mailto:Raymond.Hattori@lanzvilleinvest.com">Raymond.Hattori@lanzvilleinvest.com</a>
+    </div>
+    <div class="team-member">
+      <h3>Alex Bonpensiero – Portfolio Manager</h3>
+      <p>Verantwortlich für Multi-Asset-Portfolios und individuelle Investmentstrategien.</p>
+      <a href="mailto:Alex.Bonpensiero@lanzvilleinvest.com">Alex.Bonpensiero@lanzvilleinvest.com</a>
+    </div>
+    <div class="team-member">
+      <h3>Cedrick Antoine Vogt – Risk Management</h3>
+      <p>Verantwortlich für Risikoanalyse und Kapitalschutz-Strategien.</p>
+      <a href="mailto:Cedrick.Vogt@lanzvilleinvest.com">Cedrick.Vogt@lanzvilleinvest.com</a>
+    </div>
+    <div class="team-member">
+      <h3>Richard Wallace – Partner</h3>
+      <p>Erfahrener Private Equity Partner mit Jahrzehnten globaler Marktkenntnis.</p>
+      <a href="mailto:Richard.Wallace@lanzvilleinvest.com">Richard.Wallace@lanzvilleinvest.com</a>
+    </div>
+    <div class="team-member">
+      <h3>David Ruggenau – Investor Relations</h3>
+      <p>Betreut Kommunikation mit Investoren und langfristige Beziehungsentwicklung.</p>
+      <a href="mailto:David.Ruggenau@lanzvilleinvest.com">David.Ruggenau@lanzvilleinvest.com</a>
+    </div>
+  </section>
+
+  <section id="portfolio" class="section" tabindex="0" aria-label="Portfolio">
+    <h2 data-i18n="portfolio_heading">Unser Portfolio</h2>
+    <p data-i18n="portfolio_text">Wir investieren in ausgewählte Branchen und innovative Assets:</p>
+    <ul>
+      <li>Private Equity</li>
+      <li>Immobilien</li>
+      <li>Krypto-Assets</li>
+      <li>Maßgeschneiderte Finanzlösungen</li>
+    </ul>
+  </section>
+
+  <section id="privacy" class="section" tabindex="0" aria-label="Datenschutz">
+    <h2 data-i18n="privacy_heading">Datenschutz</h2>
+    <p data-i18n="privacy_text">Der Schutz Ihrer Daten ist uns wichtig. Wir verwenden Cookies nur mit Ihrer Zustimmung und verarbeiten Ihre Daten gemäß unserer Datenschutzrichtlinie.</p>
+  </section>
+
+  <footer>
+    &copy; 2025 LANZVILLE INVESTMENTS ANSTALT – Alle Rechte vorbehalten.
+  </footer>
+</div>
+
+<!-- AUDIO -->
+<audio id="bg-music" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" loop></audio>
+
 <script>
-  // Intro Animation & Music
-  const enterBtn = document.getElementById("enterBtn");
-  const intro = document.getElementById("intro");
-  const main = document.getElementById("main");
-
-  enterBtn.addEventListener("click", () => {
-    const audio = new Audio("https://files.freemusicarchive.org/storage-freemusicarchive-org/music/no_curator/Kai_Engel/Irsens_Tale/Kai_Engel_-_05_-_Snowfall.mp3");
-    audio.volume = 0.4;
-    audio.loop = true;
-    audio.play().catch(err => console.log("Playback blocked:", err));
-    intro.style.opacity = "0";
-    setTimeout(() => {
-      intro.style.display = "none";
-      main.style.display = "block";
-    }, 800);
-  });
-
-  function showSection(id) {
-    document.querySelectorAll('.section').forEach(el => el.classList.remove('active'));
-    document.getElementById(id).classList.add('active');
-  }
-
-  // Cookie Banner Logic
-  document.addEventListener("DOMContentLoaded", () => {
-    if (!localStorage.getItem("cookieConsent")) {
-      document.getElementById("cookie-banner").style.display = "block";
-    }
-
-    document.getElementById("accept-cookies").addEventListener("click", () => {
-      localStorage.setItem("cookieConsent", "accepted");
-      document.getElementById("cookie-banner").style.display = "none";
-    });
-
-    document.getElementById("decline-cookies").addEventListener("click", () => {
-      localStorage.setItem("cookieConsent", "declined");
-      document.getElementById("cookie-banner").style.display = "none";
-    });
-  });
-</script>
-
-</body>
-</html>
+  // Übersetzungen
+  const translations = {
+    de: {
+      enter: "Betreten",
+      cookie_title: "Cookies & Datenschutz",
+      cookie_text: "Wir verwenden Cookies, um Ihnen das beste Nutzererlebnis zu bieten.",
+      cookie_accept: "Akzeptieren",
+      cookie_decline: "Ablehnen",
+      title: "LANZVILLE INVESTMENTS ANSTALT",
+      welcome: "Willkommen",
+      about: "Über uns",
+      team: "Unser Team",
+      portfolio: "Portfolio",
+      privacy: "Datenschutz",
+      welcome_heading: "Willkommen bei LANZVILLE INVESTMENTS",
+      welcome_text: "Wir sind eine private Investmentgesellschaft mit Sitz in Liechtenstein, fokussiert auf langfristige Wertschöpfung durch Private Equity, Immobilien, Krypto-Assets und maßgeschneiderte Finanzlösungen.",
+      about_heading: "Über uns",
+      about_text: "Gegründet 1990 operiert LANZVILLE INVESTMENTS ANSTALT diskret an der Schnittstelle von Tradition und Innovation. Wir verfolgen Wert durch selektive Investitionen und maßgeschneiderte Finanzstrategien.",
+      team_heading: "Unser Team",
+      portfolio_heading: "Unser Portfolio",
+      portfolio_text: "Wir investieren in ausgewählte Branchen und innovative Assets:",
+      privacy_heading: "Datenschutz",
+      privacy_text: "Der Schutz Ihrer Daten ist uns wichtig. Wir verwenden Cookies nur mit Ihrer Zustimmung und verarbeiten Ihre Daten gemäß unserer Datenschutzrichtlinie."
+    },
+    en: {
+      enter: "Enter",
+      cookie_title: "Cookies & Privacy",
+      cookie_text: "We use cookies to provide you with the best user experience.",
+      cookie_accept: "Accept",
+      cookie_decline: "Decline",
+      title: "LANZVILLE INVESTMENTS ANSTALT",
+      welcome: "Welcome",
+      about: "About Us",
+      team: "Our Team",
+      portfolio: "Portfolio",
+      privacy: "Privacy Policy",
+      welcome_heading: "Welcome to LANZVILLE INVESTMENTS",
+      welcome_text: "We are a private investment company based in Liechtenstein, focused on long-term value creation through private equity, real estate, crypto-assets, and tailored financial solutions.",
+      about_heading: "About Us",
+      about_text: "Founded in 1990, LANZVILLE INVESTMENTS ANSTALT operates discreetly at the intersection of tradition and innovation. We pursue value through selective investments and tailored financial strategies.",
+      team_heading: "Our Team",
+      portfolio_heading: "Our Portfolio",
+      portfolio_text: "We invest in selected industries and innovative assets:",
+      privacy_heading: "Privacy Policy",
+      privacy_text: "Protecting your data is important to us. We use cookies only with your consent and process your data according to our
