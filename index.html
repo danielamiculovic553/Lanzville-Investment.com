@@ -6,21 +6,21 @@
   <title>LANZVILLE INVESTMENTS ANSTALT</title>
   <link rel="icon" href="https://i.postimg.cc/MGrtBnXp/IMG-6148.png" type="image/png">
   <style>
-    :root{
-      --bg:#000;
-      --bg-elev:#111;
-      --text:#e5e5e5;
-      --muted:#9a9a9a;
-      --gold:#d4af37;
-      --gold-2:#b8952f;
-      --border:#333;
-      --shadow:0 0 15px rgba(0,0,0,0.5);
-      --radius:10px;
-      --trans:250ms ease;
+    :root {
+      --bg: #000;
+      --bg-elev: #111;
+      --text: #e5e5e5;
+      --muted: #9a9a9a;
+      --gold: #d4af37;
+      --gold-2: #b8952f;
+      --border: #333;
+      --shadow: 0 0 15px rgba(0,0,0,0.5);
+      --radius: 10px;
+      --trans: 250ms ease;
     }
 
-    * { margin:0; padding:0; box-sizing:border-box; }
-    html,body { height:100%; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { height: 100%; }
     body {
       font-family: 'Helvetica Neue', Arial, sans-serif;
       background-color: var(--bg);
@@ -38,8 +38,8 @@
       align-items: center;
       justify-content: center;
       transition: opacity .8s ease;
-      text-align:center;
-      padding:2rem;
+      text-align: center;
+      padding: 2rem;
     }
     #intro img {
       width: 180px;
@@ -72,45 +72,98 @@
       align-items: center;
       background: var(--bg-elev);
       padding: 1rem 2rem;
-      position: sticky;
+      position: fixed;
       top: 0;
+      width: 100%;
       z-index: 20;
       border-bottom: 1px solid var(--border);
     }
-    .brand { display:flex; align-items:center; gap:.75rem; }
+    .brand { display: flex; align-items: center; gap: .75rem; }
     header img { height: 50px; }
     header h1 {
       font-size: 1.5rem;
       color: var(--gold);
-      letter-spacing:.5px;
+      letter-spacing: .5px;
     }
 
+    nav { display: flex; align-items: center; }
     nav a {
       color: var(--text);
       margin-left: 1.5rem;
       text-decoration: none;
       font-weight: 700;
-      transition: color .3s ease;
-      white-space:nowrap;
+      transition: color .3s ease, background .3s ease, border-radius .3s ease;
+      white-space: nowrap;
+      padding: 0.5rem 1rem;
     }
-    nav a:hover { color: var(--gold); }
+    nav a:hover, nav a.active {
+      color: #000;
+      background: var(--gold);
+      border-radius: 6px;
+    }
 
-    .header-right{ display:flex; align-items:center; gap:1rem; flex-wrap:wrap; }
+    .header-right { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
 
     /* Language Toggle */
-    .lang-toggle{
-      display:flex; gap:.35rem; padding:.25rem; background:#0a0a0a;
-      border:1px solid var(--border); border-radius:999px; position:relative;
+    .lang-toggle {
+      display: flex;
+      gap: .35rem;
+      padding: .25rem;
+      background: #0a0a0a;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      position: relative;
     }
-    .lang-toggle button{
-      border:none; background:transparent; color:var(--text); padding:.35rem .75rem;
-      font-weight:700; cursor:pointer; border-radius:999px; transition:all var(--trans);
+    .lang-toggle button {
+      border: none;
+      background: transparent;
+      color: var(--text);
+      padding: .35rem .75rem;
+      font-weight: 700;
+      cursor: pointer;
+      border-radius: 999px;
+      transition: all var(--trans);
     }
-    .lang-toggle button.active{ color:#000; background:var(--gold); }
-    .lang-toggle button:hover{ color:var(--gold); }
-    .lang-toggle button.active:hover{ color:#000; }
+    .lang-toggle button.active { color: #000; background: var(--gold); }
+    .lang-toggle button:hover { color: var(--gold); }
+    .lang-toggle button.active:hover { color: #000; }
 
-    .section { padding: 4rem 2rem; }
+    /* Mobile Menu */
+    .menu-toggle {
+      display: none;
+      font-size: 1.5rem;
+      background: none;
+      border: none;
+      color: var(--gold);
+      cursor: pointer;
+    }
+    .nav-menu {
+      display: flex;
+      align-items: center;
+    }
+    @media (max-width: 720px) {
+      .menu-toggle { display: block; }
+      .nav-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--bg-elev);
+        flex-direction: column;
+        padding: 1rem;
+        border-bottom: 1px solid var(--border);
+      }
+      .nav-menu.active { display: flex; }
+      .nav-menu a {
+        margin: 0.5rem 0;
+        width: 100%;
+        text-align: center;
+      }
+    }
+
+    .section { padding: 4rem 2rem; margin-top: 80px; display: none; }
+    .section.active { display: block; }
 
     /* --- WELCOME --- */
     #welcome {
@@ -118,11 +171,16 @@
       text-align: center;
       color: #fff;
       padding: 6rem 2rem;
-      position:relative;
-      isolation:isolate;
+      position: relative;
+      isolation: isolate;
+      min-height: calc(100vh - 80px);
     }
-    #welcome::after{
-      content:""; position:absolute; inset:0; background:rgba(0,0,0,.35); z-index:-1;
+    #welcome::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,.35);
+      z-index: -1;
     }
     #welcome h2 {
       font-size: clamp(2rem, 2.5vw + 1rem, 3rem);
@@ -136,7 +194,7 @@
       background-color: rgba(0,0,0,0.55);
       padding: 1.25rem 1.5rem;
       border-radius: 10px;
-      border:1px solid rgba(212,175,55,.25);
+      border: 1px solid rgba(212,175,55,.25);
       backdrop-filter: blur(2px);
     }
 
@@ -144,16 +202,16 @@
     #about h2, #team h2, #portfolio h2, #privacy h2 {
       color: var(--gold);
       margin-bottom: 1rem;
-      letter-spacing:.5px;
+      letter-spacing: .5px;
     }
-    #about p, #privacy p { max-width: 900px; line-height:1.65; color:#ddd; }
+    #about p, #privacy p { max-width: 900px; line-height: 1.65; color: #ddd; }
 
     /* --- TEAM --- */
     #team .team-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 2rem;
-      margin-top:1rem;
+      margin-top: 1rem;
     }
     .team-card {
       background: #0b0b0b;
@@ -169,119 +227,145 @@
       border-color: var(--gold);
       box-shadow: 0 0 25px rgba(212,175,55,.15);
     }
-    .team-card h3 { color: var(--gold); margin-bottom: 0.4rem; font-size:1.1rem; }
-    .team-card p { font-size: .98rem; line-height: 1.55; color:#dcdcdc; }
+    .team-card h3 { color: var(--gold); margin-bottom: 0.4rem; font-size: 1.1rem; }
+    .team-card p { font-size: .98rem; line-height: 1.55; color: #dcdcdc; }
     .team-card a {
-      display: inline-block; margin-top: 0.65rem; color: var(--gold);
-      text-decoration: none; font-weight: bold; border-bottom:1px dashed transparent;
-      transition:border-color var(--trans);
+      display: inline-block;
+      margin-top: 0.65rem;
+      color: var(--gold);
+      text-decoration: none;
+      font-weight: bold;
+      border-bottom: 1px dashed transparent;
+      transition: border-color var(--trans);
     }
-    .team-card a:hover{ border-color:var(--gold); }
+    .team-card a:hover { border-color: var(--gold); }
 
-    /* --- PORTFOLIO (Premium Grid) --- */
-    .portfolio-grid{
-      display:grid;
+    /* --- PORTFOLIO --- */
+    .portfolio-grid {
+      display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap:1.5rem;
-      margin-top:1.25rem;
+      gap: 1.5rem;
+      margin-top: 1.25rem;
     }
-    .portfolio-card{
+    .portfolio-card {
       background: linear-gradient(180deg, #0b0b0b 0%, #0a0a0a 100%);
-      border:1px solid var(--border);
+      border: 1px solid var(--border);
       border-radius: var(--radius);
-      padding:1.25rem 1.25rem 1.35rem;
+      padding: 1.25rem 1.25rem 1.35rem;
       box-shadow: var(--shadow);
       transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
-      position:relative; overflow:hidden; isolation:isolate;
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
     }
-    .portfolio-card::before{
-      content:"";
-      position:absolute; inset:-1px;
+    .portfolio-card::before {
+      content: "";
+      position: absolute;
+      inset: -1px;
       background: radial-gradient(800px 300px at -20% -30%, rgba(212,175,55,.18), transparent 60%);
-      z-index:-1; opacity:.4; transition:opacity var(--trans);
+      z-index: -1;
+      opacity: .4;
+      transition: opacity var(--trans);
     }
-    .portfolio-card:hover{
+    .portfolio-card:hover {
       transform: translateY(-6px);
       box-shadow: 0 12px 30px rgba(0,0,0,.6), 0 0 30px rgba(212,175,55,.12);
       border-color: rgba(212,175,55,.5);
     }
-    .portfolio-icon{ width:48px; height:48px; margin-bottom:.75rem; flex:0 0 auto; }
-    .portfolio-title{ color:var(--gold); font-weight:800; letter-spacing:.3px; margin-bottom:.35rem; }
-    .portfolio-desc{ color:#dcdcdc; line-height:1.6; }
+    .portfolio-icon { width: 48px; height: 48px; margin-bottom: .75rem; flex: 0 0 auto; }
+    .portfolio-title { color: var(--gold); font-weight: 800; letter-spacing: .3px; margin-bottom: .35rem; }
+    .portfolio-desc { color: #dcdcdc; line-height: 1.6; }
 
     /* --- FOOTER --- */
     footer {
-      text-align: center; padding: 2rem; background: var(--bg-elev);
-      font-size: 0.9rem; color: #888; border-top:1px solid var(--border);
+      text-align: center;
+      padding: 2rem;
+      background: var(--bg-elev);
+      font-size: 0.9rem;
+      color: #888;
+      border-top: 1px solid var(--border);
     }
 
     /* --- COOKIE MODAL --- */
-    .overlay{
-      position: fixed; inset:0; background: rgba(0,0,0,.55);
-      backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
-      display:none; align-items:center; justify-content:center;
-      z-index: 9999; opacity:0; transition: opacity .3s ease;
+    .overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.55);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      opacity: 0;
+      transition: opacity .3s ease;
     }
-    .overlay.show{ display:flex; opacity:1; }
-    .cookie-modal{
-      width:min(560px, 92vw); background:#0c0c0c; border:1px solid var(--border);
-      border-radius:16px; padding:1.25rem; box-shadow: 0 10px 30px rgba(0,0,0,.6), 0 0 0 1px rgba(255,255,255,.03) inset;
+    .overlay.show { display: flex; opacity: 1; }
+    .cookie-modal {
+      width: min(560px, 92vw);
+      background: #0c0c0c;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.25rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,.6), 0 0 0 1px rgba(255,255,255,.03) inset;
       animation: pop .18s ease-out;
     }
-    @keyframes pop{ from{ transform:scale(.98); opacity:.8 } to{ transform:scale(1); opacity:1 } }
-    .cookie-header{ display:flex; gap:.75rem; align-items:center; margin-bottom:.5rem; }
-    .cookie-header svg{ width:28px; height:28px; }
-    .cookie-title{ font-weight:800; color:var(--gold); font-size:1.05rem; }
-    .cookie-text{ color:#dcdcdc; line-height:1.6; margin:.35rem 0 .85rem; }
-    .cookie-actions{ display:flex; gap:.75rem; justify-content:flex-end; flex-wrap:wrap; }
-    .btn{ padding:.65rem 1rem; border-radius:8px; border:1px solid transparent; font-weight:800; cursor:pointer; transition: all var(--trans); }
-    .btn-accept{ background:var(--gold); color:#000; }
-    .btn-accept:hover{ background:var(--gold-2); }
-    .btn-reject{ background:#1a1a1a; color:#eaeaea; border-color:#2a2a2a; }
-    .btn-reject:hover{ border-color:#3a3a3a; color:#fff; }
+    @keyframes pop { from { transform: scale(.98); opacity: .8 } to { transform: scale(1); opacity: 1 } }
+    .cookie-header { display: flex; gap: .75rem; align-items: center; margin-bottom: .5rem; }
+    .cookie-header svg { width: 28px; height: 28px; }
+    .cookie-title { font-weight: 800; color: var(--gold); font-size: 1.05rem; }
+    .cookie-text { color: #dcdcdc; line-height: 1.6; margin: .35rem 0 .85rem; }
+    .cookie-actions { display: flex; gap: .75rem; justify-content: flex-end; flex-wrap: wrap; }
+    .btn { padding: .65rem 1rem; border-radius: 8px; border: 1px solid transparent; font-weight: 800; cursor: pointer; transition: all var(--trans); }
+    .btn-accept { background: var(--gold); color: #000; }
+    .btn-accept:hover { background: var(--gold-2); }
+    .btn-reject { background: #1a1a1a; color: #eaeaea; border-color: #2a2a2a; }
+    .btn-reject:hover { border-color: #3a3a3a; color: #fff; }
 
-    .sr-only{
-      position:absolute !important; width:1px; height:1px; margin:-1px; padding:0;
-      overflow:hidden; clip:rect(0,0,0,0); border:0;
+    .sr-only {
+      position: absolute !important;
+      width: 1px;
+      height: 1px;
+      margin: -1px;
+      padding: 0;
+      overflow: hidden;
+      clip: rect(0,0,0,0);
+      border: 0;
     }
-
-    @media (max-width: 720px){ nav{ display:none; } }
   </style>
 </head>
 <body>
 
-<!-- INTRO (English-only until Enter) -->
+<!-- INTRO -->
 <section id="intro" aria-labelledby="intro-title">
   <h2 id="intro-title" class="sr-only">Welcome</h2>
   <img src="https://i.postimg.cc/MGrtBnXp/IMG-6148.png" alt="LANZVILLE INVESTMENTS ANSTALT Logo" />
   <button id="enter-btn" aria-label="Enter">Enter</button>
 </section>
 
-<!-- OVERLAY + COOKIE MODAL (appears right after Enter) -->
+-- OVERLAY + COOKIE MODAL --
 <div id="cookie-overlay" class="overlay" role="dialog" aria-modal="true" aria-labelledby="cookie-title" aria-describedby="cookie-desc">
   <div class="cookie-modal">
     <div class="cookie-header">
-      <!-- Gold shield lock icon -->
       <svg class="cookie-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
         <path d="M12 2l7 3v6c0 5-3.5 9.5-7 11-3.5-1.5-7-6-7-11V5l7-3z" stroke="#d4af37" stroke-width="1.2" fill="rgba(212,175,55,0.08)"/>
         <path d="M9 11a3 3 0 1 1 6 0v2h1a1 1 0 0 1 1 1v3H7v-3a1 1 0 0 1 1-1h1v-2z" stroke="#d4af37" stroke-width="1.1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
-      <div class="cookie-title" id="cookie-title">Your Privacy</div>
+      <div class="cookie-title" id="cookie-title" data-i18n="cookie.title">Your Privacy</div>
     </div>
-    <p class="cookie-text" id="cookie-desc">
+    <p class="cookie-text" id="cookie-desc" data-i18n="cookie.text">
       We use cookies to improve your experience. You can accept or reject non-essential cookies. Some features may be limited if you reject.
     </p>
     <div class="cookie-actions">
-      <button class="btn btn-reject" id="cookie-reject">Reject</button>
-      <button class="btn btn-accept" id="cookie-accept">Accept</button>
+      <button class="btn btn-reject" id="cookie-reject" data-i18n="cookie.reject">Reject</button>
+      <button class="btn btn-accept" id="cookie-accept" data-i18n="cookie.accept">Accept</button>
     </div>
   </div>
 </div>
 
-<!-- MAIN CONTENT -->
+-- MAIN CONTENT --
 <div id="main-content" aria-live="polite">
-
-  <!-- HEADER -->
+  -- HEADER --
   <header>
     <div class="brand">
       <img src="https://i.postimg.cc/MGrtBnXp/IMG-6148.png" alt="Lanzville Logo">
@@ -289,15 +373,15 @@
     </div>
 
     <div class="header-right">
-      <nav aria-label="Primary">
-        <a href="#welcome" data-i18n="nav.home">Home</a>
-        <a href="#about" data-i18n="nav.about">About Us</a>
-        <a href="#team" data-i18n="nav.team">Our Team</a>
-        <a href="#portfolio" data-i18n="nav.portfolio">Portfolio</a>
-        <a href="#privacy" data-i18n="nav.privacy">Privacy</a>
+      <button class="menu-toggle" aria-label="Toggle menu">☰</button>
+      <nav class="nav-menu" aria-label="Primary">
+        <a href="#" class="active" data-tab="welcome" data-i18n="nav.home">Home</a>
+        <a href="#" data-tab="about" data-i18n="nav.about">About Us</a>
+        <a href="#" data-tab="team" data-i18n="nav.team">Our Team</a>
+        <a href="#" data-tab="portfolio" data-i18n="nav.portfolio">Portfolio</a>
+        <a href="#" data-tab="privacy" data-i18n="nav.privacy">Privacy</a>
       </nav>
 
-      <!-- EN / DE Toggle -->
       <div class="lang-toggle" role="group" aria-label="Language switcher">
         <button id="btn-en" class="active" data-lang="en" aria-pressed="true">EN</button>
         <button id="btn-de" data-lang="de" aria-pressed="false">DE</button>
@@ -305,155 +389,144 @@
     </div>
   </header>
 
-  <!-- WELCOME -->
-  <section id="welcome">
-    <h2 data-i18n="welcome.title">Welcome to Lanzville Investment</h2>
-    <p data-i18n="welcome.text">
-      We are a boutique investment firm based in Liechtenstein, focused on long-term value creation through private equity, real estate, crypto assets, and bespoke financial strategies. Explore our vision, our people, and our mission.
-    </p>
-  </section>
+  -- TAB CONTAINER --
+  <div class="tab-container">
+    -- WELCOME --
+    <section id="welcome" class="section active">
+      <h2 data-i18n="welcome.title">Welcome to Lanzville Investment</h2>
+      <p data-i18n="welcome.text">
+        We are a boutique investment firm based in Liechtenstein, focused on long-term value creation through private equity, real estate, crypto assets, and bespoke financial strategies. Explore our vision, our people, and our mission.
+      </p>
+    </section>
 
-  <!-- ABOUT -->
-  <section id="about" class="section">
-    <h2 data-i18n="about.title">About Us</h2>
-    <p data-i18n="about.text">
-      LANZVILLE INVESTMENTS ANSTALT is a private investment company founded in 1990. With over three decades of experience, our approach is focused on sustainable and innovative capital deployment across global markets.
-    </p>
-  </section>
+    -- ABOUT --
+    <section id="about" class="section">
+      <h2 data-i18n="about.title">About Us</h2>
+      <p data-i18n="about.text">
+        LANZVILLE INVESTMENTS ANSTALT is a private investment company founded in 1990. With over three decades of experience, our approach is focused on sustainable and innovative capital deployment across global markets.
+      </p>
+    </section>
 
-  <!-- TEAM -->
-  <section id="team" class="section">
-    <h2 data-i18n="team.title">Our Team</h2>
-
-    <div class="team-grid">
-      <div class="team-card">
-        <h3>David Luksic Lederer — <span data-i18n="team.david.title">CEO</span></h3>
-        <p data-i18n="team.david.desc">Over 20 years in wealth management, David leads the strategic direction of the firm.</p>
-        <a href="mailto:David.Lederer@lanzvilleinvest.com" data-i18n="team.contact">Contact</a>
-      </div>
-
-      <div class="team-card">
-        <h3>Benedit Moos — <span data-i18n="team.benedit.title">Co-Founder</span></h3>
-        <p data-i18n="team.benedit.desc">Visionary entrepreneur who co-founded Lanzville, focused on alternative asset strategies.</p>
-        <a href="mailto:Benedit.Moos@lanzvilleinvest.com" data-i18n="team.contact">Contact</a>
-      </div>
-
-      <div class="team-card">
-        <h3>Nathan Alexandrè Gaila — <span data-i18n="team.nathan.title">CFO, Lawyer &amp; Investor Advisor</span></h3>
-        <p data-i18n="team.nathan.desc">Leads financial operations and ensures compliance in all jurisdictions. Also serves as legal counsel and advisor to our investors.</p>
-        <a href="mailto:Nathan.Gaila@lanzvilleinvest.com" data-i18n="team.contact">Contact</a>
-      </div>
-
-      <div class="team-card">
-        <h3>Sarah Schreiber — <span data-i18n="team.sarah.title">Lead Analyst</span></h3>
-        <p data-i18n="team.sarah.desc">Heads market research and provides insight into global trends and opportunities.</p>
-        <a href="mailto:Sarah.Schreiber@lanzvilleinvest.com" data-i18n="team.contact">Contact</a>
-      </div>
-
-      <div class="team-card">
-        <h3>Raymond Hattori — <span data-i18n="team.raymond.title">Head of Alternative Investment</span></h3>
-        <p data-i18n="team.raymond.desc">Expert in crypto assets and modern investment strategies with a risk-focused approach.</p>
-        <a href="mailto:Raymond.Hattori@lanzvilleinvest.com" data-i18n="team.contact">Contact</a>
-      </div>
-
-      <div class="team-card">
-        <h3>Alex Bonpensiero — <span data-i18n="team.alex.title">Portfolio Manager</span></h3>
-        <p data-i18n="team.alex.desc">Manages multi-asset portfolios tailored to individual client needs.</p>
-        <a href="mailto:Alex.Bonpensiero@lanzvilleinvest.com" data-i18n="team.contact">Contact</a>
-      </div>
-
-      <div class="team-card">
-        <h3>Cedrick Antoine Vogt — <span data-i18n="team.cedrick.title">Risk Management</span></h3>
-        <p data-i18n="team.cedrick.desc">Ensures capital preservation through structured risk protocols.</p>
-        <a href="mailto:Cedrick.Vogt@lanzvilleinvest.com" data-i18n="team.contact">Contact</a>
-      </div>
-
-      <div class="team-card">
-        <h3>Richard Wallace — <span data-i18n="team.richard.title">Partner</span></h3>
-        <p data-i18n="team.richard.desc">Decades of experience in private equity and global financial operations.</p>
-        <a href="mailto:Richard.Wallace@lanzvilleinvest.com" data-i18n="team.contact">Contact</a>
-      </div>
-
-      <div class="team-card">
-        <h3>David Ruggenau — <span data-i18n="team.ruggenau.title">Investor Relations</span></h3>
-        <p data-i18n="team.ruggenau.desc">Maintains client relationships and manages investor communications.</p>
-        <a href="mailto:David.Ruggenau@lanzvilleinvest.com" data-i18n="team.contact">Contact</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- PORTFOLIO (Premium Grid with Gold SVG icons) -->
-  <section id="portfolio" class="section">
-    <h2 data-i18n="portfolio.title">Portfolio</h2>
-    <div class="portfolio-grid">
-
-      <!-- Private Equity -->
-      <article class="portfolio-card">
-        <!-- Handshake Icon -->
-        <svg class="portfolio-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <path d="M2 12l4.5-4.5a3 3 0 0 1 4.24 0L12 8.76l1.26-1.26a3 3 0 0 1 4.24 0L22 12" stroke="#d4af37" stroke-width="1.2"/>
-          <path d="M7 13l3 3a2.5 2.5 0 0 0 3.54 0L20 9" stroke="#d4af37" stroke-width="1.2" stroke-linecap="round"/>
-          <path d="M2 12v6h6" stroke="#d4af37" stroke-width="1.2"/>
-          <path d="M22 12v6h-6" stroke="#d4af37" stroke-width="1.2"/>
-        </svg>
-        <div class="portfolio-title" data-i18n="portfolio.pe.title"><strong>Private Equity</strong></div>
-        <div class="portfolio-desc" data-i18n="portfolio.pe.desc">
-          Strategic growth capital for family businesses.
+    -- TEAM --
+    <section id="team" class="section">
+      <h2 data-i18n="team.title">Our Team</h2>
+      <div class="team-grid">
+        <div class="team-card">
+          <h3>Davor Luksic Lederer — <span data-i18n="team.david.title">CEO</span></h3>
+          <p data-i18n="team.david.desc">Over 20 years in wealth management, David leads the strategic direction of the firm.</p>
+          <a href="mailto:Davor.Lederer@lanzvilleinvest.com" data-i18n="team.contact">Contact</a>
         </div>
-      </article>
 
-      <!-- Real Estate -->
-      <article class="portfolio-card">
-        <!-- Building Icon -->
-        <svg class="portfolio-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <rect x="4" y="3" width="8" height="18" rx="1" stroke="#d4af37" stroke-width="1.2"/>
-          <rect x="14" y="7" width="6" height="14" rx="1" stroke="#d4af37" stroke-width="1.2"/>
-          <path d="M6 6h4M6 9h4M6 12h4M6 15h4" stroke="#d4af37" stroke-width="1.2" stroke-linecap="round"/>
-          <path d="M16 10h2M16 13h2M16 16h2" stroke="#d4af37" stroke-width="1.2" stroke-linecap="round"/>
-        </svg>
-        <div class="portfolio-title" data-i18n="portfolio.re.title"><strong>Real Estate</strong></div>
-        <div class="portfolio-desc" data-i18n="portfolio.re.desc">
-          Holdings in prime international property markets.
+        <div class="team-card">
+          <h3>Benedit Moos — <span data-i18n="team.benedit.title">Co-Founder</span></h3>
+          <p data-i18n="team.benedit.desc">Visionary entrepreneur who co-founded Lanzville, focused on alternative asset strategies.</p>
+          <a href="mailto:Benedit.Moos@lanzvilleinvest.com" data-i18n="team.contact">Contact</a>
         </div>
-      </article>
 
-      <!-- Crypto Assets -->
-      <article class="portfolio-card">
-        <!-- Blockchain / Crypto Icon -->
-        <svg class="portfolio-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <rect x="3" y="3" width="6" height="6" rx="1" stroke="#d4af37" stroke-width="1.2"/>
-          <rect x="15" y="3" width="6" height="6" rx="1" stroke="#d4af37" stroke-width="1.2"/>
-          <rect x="9" y="15" width="6" height="6" rx="1" stroke="#d4af37" stroke-width="1.2"/>
-          <path d="M9 6h6M6 9v6M18 9v6M12 9v6" stroke="#d4af37" stroke-width="1.2" stroke-linecap="round"/>
-        </svg>
-        <div class="portfolio-title" data-i18n="portfolio.crypto.title"><strong>Crypto Assets</strong></div>
-        <div class="portfolio-desc" data-i18n="portfolio.crypto.desc">
-          Blockchain-based innovation and digital finance.
+        <div class="team-card">
+          <h3>Nathan Alexandrè Gaila — <span data-i18n="team.nathan.title">CFO, Lawyer &amp; Investor Advisor</span></h3>
+          <p data-i18n="team.nathan.desc">Leads financial operations and ensures compliance in all jurisdictions. Also serves as legal counsel and advisor to our investors.</p>
+          <a href="mailto:Nathan.Gaila@lanzvilleinvest.com" data-i18n="team.contact">Contact</a>
         </div>
-      </article>
 
-      <!-- Bespoke Solutions -->
-      <article class="portfolio-card">
-        <!-- Puzzle Icon -->
-        <svg class="portfolio-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <path d="M8 3h3a2 2 0 0 1 2 2v1a2 2 0 1 0 0 4v1a2 2 0 0 0 2 2h1a2 2 0 1 1 0 4v2H8V3z" stroke="#d4af37" stroke-width="1.2" stroke-linejoin="round"/>
-        </svg>
-        <div class="portfolio-title" data-i18n="portfolio.bespoke.title"><strong>Bespoke Solutions</strong></div>
-        <div class="portfolio-desc" data-i18n="portfolio.bespoke.desc">
-          Tailored structures for complex financial needs.
+        <div class="team-card">
+          <h3>Sarah Schreiber — <span data-i18n="team.sarah.title">Lead Analyst</span></h3>
+          <p data-i18n="team.sarah.desc">Heads market research and provides insight into global trends and opportunities.</p>
+          <a href="mailto:Sarah.Schreiber@lanzvilleinvest.com" data-i18n="team.contact">Contact</a>
         </div>
-      </article>
 
-    </div>
-  </section>
+        <div class="team-card">
+          <h3>Raymond Hattori — <span data-i18n="team.raymond.title">Head of Alternative Investment</span></h3>
+          <p data-i18n="team.raymond.desc">Expert in crypto assets and modern investment strategies with a risk-focused approach.</p>
+          <a href="mailto:Raymond.Hattori@lanzvilleinvest.com" data-i18n="team.contact">Contact</a>
+        </div>
 
-  <!-- PRIVACY -->
-  <section id="privacy" class="section">
-    <h2 data-i18n="privacy.title">Privacy Policy</h2>
-    <p data-i18n="privacy.text">
-      All information shared with LANZVILLE INVESTMENTS ANSTALT is handled with strict confidentiality. Our practices are GDPR-compliant and ensure your data remains protected.
-    </p>
-  </section>
+        <div class="team-card">
+          <h3>Alex Bonpensiero — <span data-i18n="team.alex.title">Portfolio Manager</span></h3>
+          <p data-i18n="team.alex.desc">Manages multi-asset portfolios tailored to individual client needs.</p>
+          <a href="mailto:Alex.Bonpensiero@lanzvilleinvest.com" data-i18n="team.contact">Contact</a>
+        </div>
+
+        <div class="team-card">
+          <h3>Cedrick Antoine Vogt — <span data-i18n="team.cedrick.title">Risk Management</span></h3>
+          <p data-i18n="team.cedrick.desc">Ensures capital preservation through structured risk protocols.</p>
+          <a href="mailto:Cedrick.Vogt@lanzvilleinvest.com" data-i18n="team.contact">Contact</a>
+        </div>
+
+        <div class="team-card">
+          <h3>Richard Wallace — <span data-i18n="team.richard.title">Partner</span></h3>
+          <p data-i18n="team.richard.desc">Decades of experience in private equity and global financial operations.</p>
+          <a href="mailto:Richard.Wallace@lanzvilleinvest.com" data-i18n="team.contact">Contact</a>
+        </div>
+
+        <div class="team-card">
+          <h3>David Ruggenau — <span data-i18n="team.ruggenau.title">Investor Relations</span></h3>
+          <p data-i18n="team.ruggenau.desc">Maintains client relationships and manages investor communications.</p>
+          <a href="mailto:David.Ruggenau@lanzvilleinvest.com" data-i18n="team.contact">Contact</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- PORTFOLIO -->
+    <section id="portfolio" class="section">
+      <h2 data-i18n="portfolio.title">Portfolio</h2>
+      <div class="portfolio-grid">
+        <article class="portfolio-card">
+          <svg class="portfolio-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M2 12l4.5-4.5a3 3 0 0 1 4.24 0L12 8.76l1.26-1.26a3 3 0 0 1 4.24 0L22 12" stroke="#d4af37" stroke-width="1.2"/>
+            <path d="M7 13l3 3a2.5 2.5 0 0 0 3.54 0L20 9" stroke="#d4af37" stroke-width="1.2" stroke-linecap="round"/>
+            <path d="M2 12v6h6" stroke="#d4af37" stroke-width="1.2"/>
+            <path d="M22 12v6h-6" stroke="#d4af37" stroke-width="1.2"/>
+          </svg>
+          <div class="portfolio-title" data-i18n="portfolio.pe.title"><strong>Private Equity</strong></div>
+          <div class="portfolio-desc" data-i18n="portfolio.pe.desc">
+            Strategic growth capital for family businesses.
+          </div>
+        </article>
+        <article class="portfolio-card">
+          <svg class="portfolio-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <rect x="4" y="3" width="8" height="18" rx="1" stroke="#d4af37" stroke-width="1.2"/>
+            <rect x="14" y="7" width="6" height="14" rx="1" stroke="#d4af37" stroke-width="1.2"/>
+            <path d="M6 6h4M6 9h4M6 12h4M6 15h4" stroke="#d4af37" stroke-width="1.2" stroke-linecap="round"/>
+            <path d="M16 10h2M16 13h2M16 16h2" stroke="#d4af37" stroke-width="1.2" stroke-linecap="round"/>
+          </svg>
+          <div class="portfolio-title" data-i18n="portfolio.re.title"><strong>Real Estate</strong></div>
+          <div class="portfolio-desc" data-i18n="portfolio.re.desc">
+            Holdings in prime international property markets.
+          </div>
+        </article>
+        <article class="portfolio-card">
+          <svg class="portfolio-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <rect x="3" y="3" width="6" height="6" rx="1" stroke="#d4af37" stroke-width="1.2"/>
+            <rect x="15" y="3" width="6" height="6" rx="1" stroke="#d4af37" stroke-width="1.2"/>
+            <rect x="9" y="15" width="6" height="6" rx="1" stroke="#d4af37" stroke-width="1.2"/>
+            <path d="M9 6h6M6 9v6M18 9v6M12 9v6" stroke="#d4af37" stroke-width="1.2" stroke-linecap="round"/>
+          </svg>
+          <div class="portfolio-title" data-i18n="portfolio.crypto.title"><strong>Crypto Assets</strong></div>
+          <div class="portfolio-desc" data-i18n="portfolio.crypto.desc">
+            Blockchain-based innovation and digital finance.
+          </div>
+        </article>
+        <article class="portfolio-card">
+          <svg class="portfolio-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M8 3h3a2 2 0 0 1 2 2v1a2 2 0 1 0 0 4v1a2 2 0 0 0 2 2h1a2 2 0 1 1 0 4v2H8V3z" stroke="#d4af37" stroke-width="1.2" stroke-linejoin="round"/>
+          </svg>
+          <div class="portfolio-title" data-i18n="portfolio.bespoke.title"><strong>Bespoke Solutions</strong></div>
+          <div class="portfolio-desc" data-i18n="portfolio.bespoke.desc">
+            Tailored structures for complex financial needs.
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- PRIVACY -->
+    <section id="privacy" class="section">
+      <h2 data-i18n="privacy.title">Privacy Policy</h2>
+      <p data-i18n="privacy.text">
+        All information shared with LANZVILLE INVESTMENTS ANSTALT is handled with strict confidentiality. Our practices are GDPR-compliant and ensure your data remains protected.
+      </p>
+    </section>
+  </div>
 
   <!-- FOOTER -->
   <footer>
@@ -467,19 +540,94 @@
   const enterBtn = document.getElementById("enter-btn");
   const intro = document.getElementById("intro");
   const main = document.getElementById("main-content");
-
   const overlay = document.getElementById("cookie-overlay");
   const acceptBtn = document.getElementById("cookie-accept");
   const rejectBtn = document.getElementById("cookie-reject");
-
   const btnEN = document.getElementById("btn-en");
   const btnDE = document.getElementById("btn-de");
+  const menuToggle = document.querySelector(".menu-toggle");
+  const navMenu = document.querySelector(".nav-menu");
 
-  // I18N dictionary (EN default; DE formal for nav & portfolio)
+  // Debugging: Log when script starts
+  console.log("Script loaded");
+
+  // Check if images are loading
+  const logoImg = document.querySelector("#intro img");
+  logoImg.addEventListener("load", () => console.log("Logo image loaded: https://i.postimg.cc/MGrtBnXp/IMG-6148.png"));
+  logoImg.addEventListener("error", () => console.error("Error loading logo image: https://i.postimg.cc/MGrtBnXp/IMG-6148.png"));
+  const welcomeBg = document.querySelector("#welcome");
+  welcomeBg.addEventListener("load", () => console.log("Welcome background loaded: https://i.postimg.cc/nz0XnWBn/IMG-6188.jpg"));
+  welcomeBg.addEventListener("error", () => console.error("Error loading welcome background: https://i.postimg.cc/nz0XnWBn/IMG-6188.jpg"));
+
+  // Mobile menu toggle
+  menuToggle.addEventListener("click", () => {
+    navMenu.classList.toggle("active");
+    console.log("Menu toggled, active:", navMenu.classList.contains("active"));
+  });
+
+  // Tab navigation
+  document.querySelectorAll("nav a").forEach(link => {
+    link.addEventListener("click", e => {
+      e.preventDefault();
+      const tab = link.getAttribute("data-tab");
+      console.log("Tab clicked:", tab);
+
+      // Remove active class from all links and sections
+      document.querySelectorAll("nav a").forEach(l => l.classList.remove("active"));
+      document.querySelectorAll(".section").forEach(sec => sec.classList.remove("active"));
+
+      // Add active class to clicked link and corresponding section
+      link.classList.add("active");
+      const section = document.getElementById(tab);
+      if (section) {
+        section.classList.add("active");
+        console.log("Section activated:", tab);
+      } else {
+        console.error("Section not found for tab:", tab);
+      }
+
+      // Close mobile menu on tab selection
+      navMenu.classList.remove("active");
+    });
+  });
+
+  // Cookie actions
+  acceptBtn.addEventListener('click', () => {
+    console.log("Cookies accepted");
+    try { localStorage.setItem('cookieConsent', 'accepted'); } catch(e) {
+      console.error("Error setting cookieConsent:", e);
+    }
+    overlay.classList.remove('show');
+  });
+  rejectBtn.addEventListener('click', () => {
+    console.log("Cookies rejected");
+    overlay.classList.remove('show');
+  });
+
+  // Enter flow
+  enterBtn.addEventListener("click", () => {
+    console.log("Enter button clicked");
+    intro.style.opacity = "0";
+    setTimeout(() => {
+      intro.style.display = "none";
+      main.style.display = "block";
+      console.log("Main content displayed");
+      const savedLang = (localStorage.getItem('lang') === 'de') ? 'de' : 'en';
+      setLang(savedLang);
+      if (localStorage.getItem('cookieConsent') !== 'accepted') {
+        console.log("Showing cookie modal");
+        overlay.classList.add('show');
+      } else {
+        console.log("Cookies already accepted, hiding modal");
+      }
+    }, 800);
+  });
+
+  // I18N dictionary
   const i18n = {
     en: {
       brand: "LANZVILLE INVESTMENTS ANSTALT",
-      nav: { home:"Home", about:"About Us", team:"Our Team", portfolio:"Portfolio", privacy:"Privacy" },
+      nav: { home: "Home", about: "About Us", team: "Our Team", portfolio: "Portfolio", privacy: "Privacy" },
       welcome: {
         title: "Welcome to Lanzville Investment",
         text: "We are a investment firm based in Liechtenstein, focused on long-term value creation through private equity, real estate, crypto assets, and bespoke financial strategies. Explore our vision, our people, and our mission."
@@ -490,37 +638,43 @@
       },
       team: {
         title: "Our Team",
-        david: { title:"CEO", desc:"Over 20 years in wealth management, David leads the strategic direction of the firm." },
-        benedit: { title:"Co-Founder", desc:"Visionary entrepreneur who co-founded Lanzville, focused on alternative asset strategies." },
-        nathan: { title:"CFO, Lawyer & Investor Advisor", desc:"Leads financial operations and ensures compliance in all jurisdictions. Also serves as legal counsel and advisor to our investors." },
-        sarah: { title:"Lead Analyst", desc:"Heads market research and provides insight into global trends and opportunities." },
-        raymond: { title:"Head of Alternative Investment", desc:"Expert in crypto assets and modern investment strategies with a risk-focused approach." },
-        alex: { title:"Portfolio Manager", desc:"Manages multi-asset portfolios tailored to individual client needs." },
-        cedrick: { title:"Risk Management", desc:"Ensures capital preservation through structured risk protocols." },
-        richard: { title:"Partner", desc:"Decades of experience in private equity and global financial operations." },
-        ruggenau: { title:"Investor Relations", desc:"Maintains client relationships and manages investor communications." },
+        Davor: { title: "CEO", desc: "Over 20 years in wealth management, David leads the strategic direction of the firm." },
+        benedit: { title: "Co-Founder", desc: "Visionary entrepreneur who co-founded Lanzville, focused on alternative asset strategies." },
+        nathan: { title: "CFO, Lawyer & Investor Advisor", desc: "Leads financial operations and ensures compliance in all jurisdictions. Also serves as legal counsel and advisor to our investors." },
+        sarah: { title: "Lead Analyst", desc: "Heads market research and provides insight into global trends and opportunities." },
+        raymond: { title: "Head of Alternative Investment", desc: "Expert in crypto assets and modern investment strategies with a risk-focused approach." },
+        alex: { title: "Portfolio Manager", desc: "Manages multi-asset portfolios tailored to individual client needs." },
+        cedrick: { title: "Risk Management", desc: "Ensures capital preservation through structured risk protocols." },
+        richard: { title: "Partner", desc: "Decades of experience in private equity and global financial operations." },
+        ruggenau: { title: "Investor Relations", desc: "Maintains client relationships and manages investor communications." },
         contact: "Contact"
       },
       portfolio: {
         title: "Portfolio",
-        pe: { title:"Private Equity", desc:"Strategic growth capital for family businesses." },
-        re: { title:"Real Estate", desc:"Holdings in prime international property markets." },
-        crypto: { title:"Crypto Assets", desc:"Blockchain-based innovation and digital finance." },
-        bespoke: { title:"Bespoke Solutions", desc:"Tailored structures for complex financial needs." }
+        pe: { title: "Private Equity", desc: "Strategic growth capital for family businesses." },
+        re: { title: "Real Estate", desc: "Holdings in prime international property markets." },
+        crypto: { title: "Crypto Assets", desc: "Blockchain-based innovation and digital finance." },
+        bespoke: { title: "Bespoke Solutions", desc: "Tailored structures for complex financial needs." }
       },
       privacy: {
-        title:"Privacy Policy",
-        text:"All information shared with LANZVILLE INVESTMENTS ANSTALT is handled with strict confidentiality. Our practices are GDPR-compliant and ensure your data remains protected."
+        title: "Privacy Policy",
+        text: "All information shared with LANZVILLE INVESTMENTS ANSTALT is handled with strict confidentiality. Our practices are GDPR-compliant and ensure your data remains protected."
+      },
+      cookie: {
+        title: "Your Privacy",
+        text: "We use cookies to improve your experience. You can accept or reject non-essential cookies. Some features may be limited if you reject.",
+        accept: "Accept",
+        reject: "Reject"
       }
     },
     de: {
       brand: "LANZVILLE INVESTMENTS ANSTALT",
       nav: {
-        home:"Startseite",
-        about:"Über das Unternehmen",
-        team:"Das Team",
-        portfolio:"Anlageportfolio",
-        privacy:"Datenschutz"
+        home: "Startseite",
+        about: "Über das Unternehmen",
+        team: "Das Team",
+        portfolio: "Anlageportfolio",
+        privacy: "Datenschutz"
       },
       welcome: {
         title: "Willkommen bei Lanzville Investment",
@@ -532,92 +686,73 @@
       },
       team: {
         title: "Das Team",
-        david: { title:"CEO", desc:"Mit über 20 Jahren im Wealth Management verantwortet David die strategische Ausrichtung des Unternehmens." },
-        benedit: { title:"Mitgründer", desc:"Visionärer Unternehmer und Mitgründer von Lanzville, mit Fokus auf alternative Anlagestrategien." },
-        nathan: { title:"CFO, Rechtsanwalt & Berater unserer Investoren", desc:"Leitet die Finanzorganisation und stellt Compliance in allen Jurisdiktionen sicher. Zudem als Rechtsbeistand und Berater unserer Investoren tätig." },
-        sarah: { title:"Leitende Analystin", desc:"Leitet die Marktforschung und liefert Einblicke in globale Trends und Chancen." },
-        raymond: { title:"Leiter Alternative Investments", desc:"Experte für Krypto-Assets und moderne Anlagestrategien mit risikoorientiertem Ansatz." },
-        alex: { title:"Portfoliomanager", desc:"Verwaltet Multi-Asset-Portfolios, maßgeschneidert auf individuelle Kundenbedürfnisse." },
-        cedrick: { title:"Risikomanagement", desc:"Sichert Kapitalerhalt durch strukturierte Risikoprotokolle." },
-        richard: { title:"Partner", desc:"Jahrzehntelange Erfahrung im Private Equity und globalen Finanzgeschäft." },
-        ruggenau: { title:"Investor Relations", desc:"Pflegt Kundenbeziehungen und steuert die Investorenkommunikation." },
+        Davor: { title: "CEO", desc: "Mit über 20 Jahren im Wealth Management verantwortet Davor die strategische Ausrichtung des Unternehmens." },
+        benedit: { title: "Mitgründer", desc: "Visionärer Unternehmer und Mitgründer von Lanzville, mit Fokus auf alternative Anlagestrategien." },
+        nathan: { title: "CFO, Rechtsanwalt & Berater unserer Investoren", desc: "Leitet die Finanzorganisation und stellt Compliance in allen Jurisdiktionen sicher. Zudem als Rechtsbeistand und Berater unserer Investoren tätig." },
+        sarah: { title: "Leitende Analystin", desc: "Leitet die Marktforschung und liefert Einblicke in globale Trends und Chancen." },
+        raymond: { title: "Leiter Alternative Investments", desc: "Experte für Krypto-Assets und moderne Anlagestrategien mit risikoorientiertem Ansatz." },
+        alex: { title: "Portfoliomanager", desc: "Verwaltet Multi-Asset-Portfolios, maßgeschneidert auf individuelle Kundenbedürfnisse." },
+        cedrick: { title: "Risikomanagement", desc: "Sichert Kapitalerhalt durch strukturierte Risikoprotokolle." },
+        richard: { title: "Partner", desc: "Jahrzehntelange Erfahrung im Private Equity und globalen Finanzgeschäft." },
+        ruggenau: { title: "Investor Relations", desc: "Pflegt Kundenbeziehungen und steuert die Investorenkommunikation." },
         contact: "Kontakt"
       },
       portfolio: {
         title: "Anlageportfolio",
-        pe: { title:"Private Equity", desc:"Strategisches Wachstumskapital für familiengeführte Unternehmen." },
-        re: { title:"Immobilien", desc:"Beteiligungen an erstklassigen internationalen Immobilienmärkten." },
-        crypto: { title:"Krypto-Assets", desc:"Blockchain-basierte Innovationen und digitale Finanzlösungen." },
-        bespoke: { title:"Maßgeschneiderte Lösungen", desc:"Maßgeschneiderte Strukturen für komplexe finanzielle Anforderungen." }
+        pe: { title: "Private Equity", desc: "Strategisches Wachstumskapital für familiengeführte Unternehmen." },
+        re: { title: "Immobilien", desc: "Beteiligungen an erstklassigen internationalen Immobilienmärkten." },
+        crypto: { title: "Krypto-Assets", desc: "Blockchain-basierte Innovationen und digitale Finanzlösungen." },
+        bespoke: { title: "Maßgeschneiderte Lösungen", desc: "Maßgeschneiderte Strukturen für komplexe finanzielle Anforderungen." }
       },
       privacy: {
-        title:"Datenschutz",
-        text:"Alle Informationen, die Sie mit LANZVILLE INVESTMENTS ANSTALT teilen, behandeln wir streng vertraulich. Unsere Prozesse sind DSGVO-konform und schützen Ihre Daten."
+        title: "Datenschutz",
+        text: "Alle Informationen, die Sie mit LANZVILLE INVESTMENTS ANSTALT teilen, behandeln wir streng vertraulich. Unsere Prozesse sind DSGVO-konform und schützen Ihre Daten."
+      },
+      cookie: {
+        title: "Ihr Datenschutz",
+        text: "Wir verwenden Cookies, um Ihre Erfahrung zu verbessern. Sie können nicht-essentielle Cookies akzeptieren oder ablehnen. Einige Funktionen können bei Ablehnung eingeschränkt sein.",
+        accept: "Akzeptieren",
+        reject: "Ablehnen"
       }
     }
   };
 
   // Language helpers
-  let currentLang = 'en'; // English first until user switches
+  let currentLang = 'en';
 
-  function setLang(lang){
+  function setLang(lang) {
     currentLang = lang;
-    // Persist language preference
-    try { localStorage.setItem('lang', lang); } catch(e){}
-    // Toggle button styles & ARIA
-    btnEN.classList.toggle('active', lang==='en');
-    btnDE.classList.toggle('active', lang==='de');
-    btnEN.setAttribute('aria-pressed', String(lang==='en'));
-    btnDE.setAttribute('aria-pressed', String(lang==='de'));
+    console.log("Setting language:", lang);
+    try { localStorage.setItem('lang', lang); } catch(e) {
+      console.error("Error setting lang:", e);
+    }
+    btnEN.classList.toggle('active', lang === 'en');
+    btnDE.classList.toggle('active', lang === 'de');
+    btnEN.setAttribute('aria-pressed', String(lang === 'en'));
+    btnDE.setAttribute('aria-pressed', String(lang === 'de'));
 
     const dict = i18n[lang];
-
-    // Map simple keys
-    document.querySelectorAll('[data-i18n]').forEach(el=>{
+    document.querySelectorAll('[data-i18n]').forEach(el => {
       const key = el.getAttribute('data-i18n');
-      const value = key.split('.').reduce((acc, k)=> (acc && acc[k] != null) ? acc[k] : null, dict);
-      if(typeof value === 'string'){ el.innerHTML = value; }
+      const value = key.split('.').reduce((acc, k) => (acc && acc[k] != null) ? acc[k] : null, dict);
+      if (typeof value === 'string') {
+        el.innerHTML = value;
+        console.log("Updated i18n:", key, value);
+      } else {
+        console.error("Invalid i18n key:", key);
+      }
     });
   }
 
-  // Enter flow
-  enterBtn.addEventListener("click", () => {
-    intro.style.opacity = "0";
-    setTimeout(() => {
-      intro.style.display = "none";
-      // Show main content behind modal (so layout is ready)
-      main.style.display = "block";
-
-      // Apply persisted language preference after main is visible
-      const savedLang = (localStorage.getItem('lang') === 'de') ? 'de' : 'en';
-      setLang(savedLang);
-
-      // Show cookie modal (only if not accepted)
-      if(localStorage.getItem('cookieConsent') !== 'accepted'){
-        overlay.classList.add('show');
-      }
-    }, 800);
-  });
-
-  // Cookie actions
-  acceptBtn.addEventListener('click', ()=>{
-    try { localStorage.setItem('cookieConsent','accepted'); } catch(e){}
-    overlay.classList.remove('show');
-  });
-  rejectBtn.addEventListener('click', ()=>{
-    // Do not store cookies; just close modal
-    overlay.classList.remove('show');
-  });
-
   // Language toggle events
-  btnEN.addEventListener('click', ()=> setLang('en'));
-  btnDE.addEventListener('click', ()=> setLang('de'));
+  btnEN.addEventListener('click', () => setLang('en'));
+  btnDE.addEventListener('click', () => setLang('de'));
 
-  // Prepare language (for styling of toggle even before Enter if needed)
-  document.addEventListener('DOMContentLoaded', ()=>{
+  // Prepare language
+  document.addEventListener('DOMContentLoaded', () => {
     const savedLang = (localStorage.getItem('lang') === 'de') ? 'de' : 'en';
-    // Keep intro always English; only sync toggle visual state:
-    if(savedLang === 'de'){ btnEN.classList.remove('active'); btnDE.classList.add('active'); }
+    console.log("Initial language:", savedLang);
+    setLang(savedLang);
   });
 </script>
 
