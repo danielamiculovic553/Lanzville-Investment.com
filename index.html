@@ -332,6 +332,31 @@
       clip: rect(0,0,0,0);
       border: 0;
     }
+
+    /* --- CONTACT STICKER --- */
+    .contact-sticker {
+      display: none;
+      position: fixed;
+      bottom: 1rem;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--gold);
+      color: #000;
+      padding: 0.75rem 1.5rem;
+      border-radius: 999px;
+      font-weight: 700;
+      box-shadow: var(--shadow);
+      z-index: 10;
+      text-align: center;
+      white-space: nowrap;
+    }
+    .contact-sticker a {
+      text-decoration: none;
+      color: inherit;
+    }
+    .contact-sticker:hover {
+      background: var(--gold-2);
+    }
   </style>
 </head>
 <body>
@@ -343,7 +368,7 @@
   <button id="enter-btn" aria-label="Enter">Enter</button>
 </section>
 
--- OVERLAY + COOKIE MODAL --
+<!-- OVERLAY + COOKIE MODAL -->
 <div id="cookie-overlay" class="overlay" role="dialog" aria-modal="true" aria-labelledby="cookie-title" aria-describedby="cookie-desc">
   <div class="cookie-modal">
     <div class="cookie-header">
@@ -363,9 +388,9 @@
   </div>
 </div>
 
--- MAIN CONTENT --
+<!-- MAIN CONTENT -->
 <div id="main-content" aria-live="polite">
-  -- HEADER --
+  <!-- HEADER -->
   <header>
     <div class="brand">
       <img src="https://i.postimg.cc/MGrtBnXp/IMG-6148.png" alt="Lanzville Logo">
@@ -389,17 +414,17 @@
     </div>
   </header>
 
-  -- TAB CONTAINER --
+  <!-- TAB CONTAINER -->
   <div class="tab-container">
-    -- WELCOME --
+    <!-- WELCOME -->
     <section id="welcome" class="section active">
       <h2 data-i18n="welcome.title">Welcome to Lanzville Investment</h2>
       <p data-i18n="welcome.text">
-        We are a boutique investment firm based in Liechtenstein, focused on long-term value creation through private equity, real estate, crypto assets, and bespoke financial strategies. Explore our vision, our people, and our mission.
+        We are an investment firm based in Liechtenstein, focused on long-term value creation through private equity, real estate, crypto assets, and bespoke financial strategies. Explore our vision, our people, and our mission.
       </p>
     </section>
 
-    -- ABOUT --
+    <!-- ABOUT -->
     <section id="about" class="section">
       <h2 data-i18n="about.title">About Us</h2>
       <p data-i18n="about.text">
@@ -407,62 +432,62 @@
       </p>
     </section>
 
-    -- TEAM --
+    <!-- TEAM -->
     <section id="team" class="section">
       <h2 data-i18n="team.title">Our Team</h2>
       <div class="team-grid">
         <div class="team-card">
-          <h3>Davor Luksic Lederer — <span data-i18n="team.david.title">CEO</span></h3>
-          <p data-i18n="team.david.desc">Over 20 years in wealth management, David leads the strategic direction of the firm.</p>
-          <a href="mailto:Davor.Lederer@lanzvilleinvest.com" data-i18n="team.contact">Contact</a>
+          <h3>Davor Luksic Lederer — <span data-i18n="team.davor.title">CEO</span></h3>
+          <p data-i18n="team.davor.desc">Over 20 years in wealth management, Davor leads the strategic direction of the firm.</p>
+          <a href="mailto:Davor.Lederer@lanzvilleinvestment.com" data-i18n="team.contact">Contact</a>
         </div>
 
         <div class="team-card">
           <h3>Benedit Moos — <span data-i18n="team.benedit.title">Co-Founder</span></h3>
           <p data-i18n="team.benedit.desc">Visionary entrepreneur who co-founded Lanzville, focused on alternative asset strategies.</p>
-          <a href="mailto:Benedit.Moos@lanzvilleinvest.com" data-i18n="team.contact">Contact</a>
+          <a href="mailto:Benedit.Moos@lanzvilleinvestment.com" data-i18n="team.contact">Contact</a>
         </div>
 
         <div class="team-card">
           <h3>Nathan Alexandrè Gaila — <span data-i18n="team.nathan.title">CFO, Lawyer &amp; Investor Advisor</span></h3>
           <p data-i18n="team.nathan.desc">Leads financial operations and ensures compliance in all jurisdictions. Also serves as legal counsel and advisor to our investors.</p>
-          <a href="mailto:Nathan.Gaila@lanzvilleinvest.com" data-i18n="team.contact">Contact</a>
+          <a href="mailto:Nathan.Gaila@lanzvilleinvestment.com" data-i18n="team.contact">Contact</a>
         </div>
 
         <div class="team-card">
           <h3>Sarah Schreiber — <span data-i18n="team.sarah.title">Lead Analyst</span></h3>
           <p data-i18n="team.sarah.desc">Heads market research and provides insight into global trends and opportunities.</p>
-          <a href="mailto:Sarah.Schreiber@lanzvilleinvest.com" data-i18n="team.contact">Contact</a>
+          <a href="mailto:Sarah.Schreiber@lanzvilleinvestment.com" data-i18n="team.contact">Contact</a>
         </div>
 
         <div class="team-card">
           <h3>Raymond Hattori — <span data-i18n="team.raymond.title">Head of Alternative Investment</span></h3>
           <p data-i18n="team.raymond.desc">Expert in crypto assets and modern investment strategies with a risk-focused approach.</p>
-          <a href="mailto:Raymond.Hattori@lanzvilleinvest.com" data-i18n="team.contact">Contact</a>
+          <a href="mailto:Raymond.Hattori@lanzvilleinvestment.com" data-i18n="team.contact">Contact</a>
         </div>
 
         <div class="team-card">
           <h3>Alex Bonpensiero — <span data-i18n="team.alex.title">Portfolio Manager</span></h3>
           <p data-i18n="team.alex.desc">Manages multi-asset portfolios tailored to individual client needs.</p>
-          <a href="mailto:Alex.Bonpensiero@lanzvilleinvest.com" data-i18n="team.contact">Contact</a>
+          <a href="mailto:Alex.Bonpensiero@lanzvilleinvestment.com" data-i18n="team.contact">Contact</a>
         </div>
 
         <div class="team-card">
           <h3>Cedrick Antoine Vogt — <span data-i18n="team.cedrick.title">Risk Management</span></h3>
           <p data-i18n="team.cedrick.desc">Ensures capital preservation through structured risk protocols.</p>
-          <a href="mailto:Cedrick.Vogt@lanzvilleinvest.com" data-i18n="team.contact">Contact</a>
+          <a href="mailto:Cedrick.Vogt@lanzvilleinvestment.com" data-i18n="team.contact">Contact</a>
         </div>
 
         <div class="team-card">
           <h3>Richard Wallace — <span data-i18n="team.richard.title">Partner</span></h3>
           <p data-i18n="team.richard.desc">Decades of experience in private equity and global financial operations.</p>
-          <a href="mailto:Richard.Wallace@lanzvilleinvest.com" data-i18n="team.contact">Contact</a>
+          <a href="mailto:Richard.Wallace@lanzvilleinvestment.com" data-i18n="team.contact">Contact</a>
         </div>
 
         <div class="team-card">
           <h3>David Ruggenau — <span data-i18n="team.ruggenau.title">Investor Relations</span></h3>
           <p data-i18n="team.ruggenau.desc">Maintains client relationships and manages investor communications.</p>
-          <a href="mailto:David.Ruggenau@lanzvilleinvest.com" data-i18n="team.contact">Contact</a>
+          <a href="mailto:David.Ruggenau@lanzvilleinvestment.com" data-i18n="team.contact">Contact</a>
         </div>
       </div>
     </section>
@@ -534,6 +559,11 @@
   </footer>
 </div>
 
+<!-- CONTACT STICKER -->
+<div class="contact-sticker">
+  <a href="mailto:office@lanzvilleinvestment.com">Contact</a>
+</div>
+
 <!-- SCRIPT -->
 <script>
   // Elements
@@ -547,6 +577,7 @@
   const btnDE = document.getElementById("btn-de");
   const menuToggle = document.querySelector(".menu-toggle");
   const navMenu = document.querySelector(".nav-menu");
+  const contactSticker = document.querySelector(".contact-sticker");
 
   // Debugging: Log when script starts
   console.log("Script loaded");
@@ -611,6 +642,7 @@
     setTimeout(() => {
       intro.style.display = "none";
       main.style.display = "block";
+      contactSticker.style.display = "block";
       console.log("Main content displayed");
       const savedLang = (localStorage.getItem('lang') === 'de') ? 'de' : 'en';
       setLang(savedLang);
@@ -630,7 +662,7 @@
       nav: { home: "Home", about: "About Us", team: "Our Team", portfolio: "Portfolio", privacy: "Privacy" },
       welcome: {
         title: "Welcome to Lanzville Investment",
-        text: "We are a investment firm based in Liechtenstein, focused on long-term value creation through private equity, real estate, crypto assets, and bespoke financial strategies. Explore our vision, our people, and our mission."
+        text: "We are an investment firm based in Liechtenstein, focused on long-term value creation through private equity, real estate, crypto assets, and bespoke financial strategies. Explore our vision, our people, and our mission."
       },
       about: {
         title: "About Us",
@@ -638,7 +670,7 @@
       },
       team: {
         title: "Our Team",
-        Davor: { title: "CEO", desc: "Over 20 years in wealth management, David leads the strategic direction of the firm." },
+        davor: { title: "CEO", desc: "Over 20 years in wealth management, Davor leads the strategic direction of the firm." },
         benedit: { title: "Co-Founder", desc: "Visionary entrepreneur who co-founded Lanzville, focused on alternative asset strategies." },
         nathan: { title: "CFO, Lawyer & Investor Advisor", desc: "Leads financial operations and ensures compliance in all jurisdictions. Also serves as legal counsel and advisor to our investors." },
         sarah: { title: "Lead Analyst", desc: "Heads market research and provides insight into global trends and opportunities." },
@@ -678,7 +710,7 @@
       },
       welcome: {
         title: "Willkommen bei Lanzville Investment",
-        text: "Wir sind ein Investment Firma mit Sitz in Liechtenstein. Unser Fokus liegt auf langfristiger Wertschöpfung in den Bereichen Private Equity, Immobilien, Krypto-Assets und maßgeschneiderte Finanzstrategien. Entdecken Sie unsere Vision, unser Team und unsere Mission."
+        text: "Wir sind eine Investment Firma mit Sitz in Liechtenstein. Unser Fokus liegt auf langfristiger Wertschöpfung in den Bereichen Private Equity, Immobilien, Krypto-Assets und maßgeschneiderte Finanzstrategien. Entdecken Sie unsere Vision, unser Team und unsere Mission."
       },
       about: {
         title: "Über das Unternehmen",
@@ -686,7 +718,7 @@
       },
       team: {
         title: "Das Team",
-        Davor: { title: "CEO", desc: "Mit über 20 Jahren im Wealth Management verantwortet Davor die strategische Ausrichtung des Unternehmens." },
+        davor: { title: "CEO", desc: "Mit über 20 Jahren im Wealth Management verantwortet Davor die strategische Ausrichtung des Unternehmens." },
         benedit: { title: "Mitgründer", desc: "Visionärer Unternehmer und Mitgründer von Lanzville, mit Fokus auf alternative Anlagestrategien." },
         nathan: { title: "CFO, Rechtsanwalt & Berater unserer Investoren", desc: "Leitet die Finanzorganisation und stellt Compliance in allen Jurisdiktionen sicher. Zudem als Rechtsbeistand und Berater unserer Investoren tätig." },
         sarah: { title: "Leitende Analystin", desc: "Leitet die Marktforschung und liefert Einblicke in globale Trends und Chancen." },
