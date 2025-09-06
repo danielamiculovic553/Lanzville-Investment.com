@@ -541,6 +541,17 @@
             Tailored structures for complex financial needs.
           </div>
         </article>
+        <article class="portfolio-card">
+          <svg class="portfolio-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M12 2L4 9L12 16L20 9Z" stroke="#d4af37" stroke-width="1.2" fill="none"/>
+            <path d="M4 9L12 16" stroke="#d4af37" stroke-width="1.2"/>
+            <path d="M20 9L12 16" stroke="#d4af37" stroke-width="1.2"/>
+          </svg>
+          <div class="portfolio-title" data-i18n="portfolio.commodities.title"><strong>Commodities Trading</strong></div>
+          <div class="portfolio-desc" data-i18n="portfolio.commodities.desc">
+            Trading physical gold, diamonds, and other precious commodities, as well as related stocks and financial instruments.
+          </div>
+        </article>
       </div>
     </section>
 
@@ -563,6 +574,12 @@
 <div class="contact-sticker">
   <a href="mailto:office@lanzvilleinvestment.com">Contact</a>
 </div>
+
+<!-- AUDIO -->
+<audio id="bg-music" loop>
+  <source src="https://incompetech.com/music/royalty-free/mp3-royaltyfree/Easy%20Lemon%20(30%20Second).mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
 
 <!-- SCRIPT -->
 <script>
@@ -652,6 +669,10 @@
       } else {
         console.log("Cookies already accepted, hiding modal");
       }
+      // Play music
+      const audio = document.getElementById('bg-music');
+      audio.volume = 0.3;
+      audio.play();
     }, 800);
   });
 
@@ -686,7 +707,8 @@
         pe: { title: "Private Equity", desc: "Strategic growth capital for family businesses." },
         re: { title: "Real Estate", desc: "Holdings in prime international property markets." },
         crypto: { title: "Crypto Assets", desc: "Blockchain-based innovation and digital finance." },
-        bespoke: { title: "Bespoke Solutions", desc: "Tailored structures for complex financial needs." }
+        bespoke: { title: "Bespoke Solutions", desc: "Tailored structures for complex financial needs." },
+        commodities: { title: "Commodities Trading", desc: "Trading physical gold, diamonds, and other precious commodities, as well as related stocks and financial instruments." }
       },
       privacy: {
         title: "Privacy Policy",
@@ -734,7 +756,8 @@
         pe: { title: "Private Equity", desc: "Strategisches Wachstumskapital für familiengeführte Unternehmen." },
         re: { title: "Immobilien", desc: "Beteiligungen an erstklassigen internationalen Immobilienmärkten." },
         crypto: { title: "Krypto-Assets", desc: "Blockchain-basierte Innovationen und digitale Finanzlösungen." },
-        bespoke: { title: "Maßgeschneiderte Lösungen", desc: "Maßgeschneiderte Strukturen für komplexe finanzielle Anforderungen." }
+        bespoke: { title: "Maßgeschneiderte Lösungen", desc: "Maßgeschneiderte Strukturen für komplexe finanzielle Anforderungen." },
+        commodities: { title: "Rohstoffhandel", desc: "Handel mit physischem Gold, Diamanten und anderen wertvollen Rohstoffen sowie damit verbundenen Aktien und Finanzinstrumenten." }
       },
       privacy: {
         title: "Datenschutz",
