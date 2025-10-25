@@ -199,12 +199,16 @@
     }
 
     /* --- HEADINGS / TEXT --- */
-    #about h2, #team h2, #portfolio h2, #privacy h2 {
+    #about h2, #team h2, #portfolio h2, #privacy h2, #impressum h2 {
       color: var(--gold);
       margin-bottom: 1rem;
       letter-spacing: .5px;
     }
-    #about p, #privacy p { max-width: 900px; line-height: 1.65; color: #ddd; }
+    #about p, #privacy p, #impressum .impressum-content { 
+      max-width: 900px; 
+      line-height: 1.65; 
+      color: #ddd; 
+    }
 
     /* --- TEAM --- */
     #team .team-grid {
@@ -276,6 +280,27 @@
     .portfolio-title { color: var(--gold); font-weight: 800; letter-spacing: .3px; margin-bottom: .35rem; }
     .portfolio-desc { color: #dcdcdc; line-height: 1.6; }
 
+    /* --- IMPRESSUM --- */
+    #impressum .impressum-content {
+      max-width: 900px;
+      line-height: 1.65;
+      color: #ddd;
+    }
+    #impressum p {
+      margin-bottom: 1rem;
+    }
+    #impressum a {
+      color: var(--gold);
+      text-decoration: none;
+      transition: color var(--trans);
+    }
+    #impressum a:hover {
+      color: var(--gold-2);
+    }
+    #impressum strong {
+      color: var(--gold);
+    }
+
     /* --- FOOTER --- */
     footer {
       text-align: center;
@@ -284,6 +309,15 @@
       font-size: 0.9rem;
       color: #888;
       border-top: 1px solid var(--border);
+    }
+    footer a {
+      color: var(--gold);
+      text-decoration: none;
+      margin: 0 0.5rem;
+      transition: color var(--trans);
+    }
+    footer a:hover {
+      color: var(--gold-2);
     }
 
     /* --- COOKIE MODAL --- */
@@ -404,6 +438,7 @@
         <a href="#" data-tab="about" data-i18n="nav.about">About Us</a>
         <a href="#" data-tab="team" data-i18n="nav.team">Our Team</a>
         <a href="#" data-tab="portfolio" data-i18n="nav.portfolio">Portfolio</a>
+        <a href="#" data-tab="impressum" data-i18n="nav.impressum">Impressum</a>
         <a href="#" data-tab="privacy" data-i18n="nav.privacy">Privacy</a>
       </nav>
 
@@ -441,61 +476,51 @@
           <p data-i18n="team.davor.desc">Over 20 years in wealth management, Davor leads the strategic direction of the firm.</p>
           <a href="mailto:Davor.Lederer@lanzvilleinvestment.com" data-i18n="team.contact">Contact</a>
         </div>
-
         <div class="team-card">
           <h3>Benedit Moos — <span data-i18n="team.benedit.title">Co-Founder</span></h3>
           <p data-i18n="team.benedit.desc">Visionary entrepreneur who co-founded Lanzville, focused on alternative asset strategies.</p>
           <a href="mailto:Benedit.Moos@lanzvilleinvestment.com" data-i18n="team.contact">Contact</a>
         </div>
-
         <div class="team-card">
           <h3>Nathan Alexandrè Gaila — <span data-i18n="team.nathan.title">CFO, Lawyer &amp; Investor Advisor</span></h3>
           <p data-i18n="team.nathan.desc">Leads financial operations and ensures compliance in all jurisdictions. Also serves as legal counsel and advisor to our investors.</p>
           <a href="mailto:Nathan.Gaila@lanzvilleinvestment.com" data-i18n="team.contact">Contact</a>
         </div>
-
         <div class="team-card">
           <h3>Sarah Schreiber — <span data-i18n="team.sarah.title">Lead Analyst</span></h3>
           <p data-i18n="team.sarah.desc">Heads market research and provides insight into global trends and opportunities.</p>
           <a href="mailto:Sarah.Schreiber@lanzvilleinvestment.com" data-i18n="team.contact">Contact</a>
         </div>
-
         <div class="team-card">
           <h3>Raymond Hattori — <span data-i18n="team.raymond.title">Head of Alternative Investment</span></h3>
           <p data-i18n="team.raymond.desc">Expert in crypto assets and modern investment strategies with a risk-focused approach.</p>
           <a href="mailto:Raymond.Hattori@lanzvilleinvestment.com" data-i18n="team.contact">Contact</a>
         </div>
-
         <div class="team-card">
           <h3>Alex Bonpensiero — <span data-i18n="team.alex.title">Portfolio Manager</span></h3>
           <p data-i18n="team.alex.desc">Manages multi-asset portfolios tailored to individual client needs.</p>
           <a href="mailto:Alex.Bonpensiero@lanzvilleinvestment.com" data-i18n="team.contact">Contact</a>
         </div>
-
         <div class="team-card">
           <h3>Cedrick Antoine Vogt — <span data-i18n="team.cedrick.title">Risk Management</span></h3>
           <p data-i18n="team.cedrick.desc">Ensures capital preservation through structured risk protocols.</p>
           <a href="mailto:Cedrick.Vogt@lanzvilleinvestment.com" data-i18n="team.contact">Contact</a>
         </div>
-
         <div class="team-card">
           <h3>Richard Wallace — <span data-i18n="team.richard.title">Partner</span></h3>
           <p data-i18n="team.richard.desc">Decades of experience in private equity and global financial operations.</p>
           <a href="mailto:Richard.Wallace@lanzvilleinvestment.com" data-i18n="team.contact">Contact</a>
         </div>
-
         <div class="team-card">
           <h3>David Ruggenau — <span data-i18n="team.ruggenau.title">Investor Relations</span></h3>
           <p data-i18n="team.ruggenau.desc">Maintains client relationships and manages investor communications.</p>
           <a href="mailto:David.Ruggenau@lanzvilleinvestment.com" data-i18n="team.contact">Contact</a>
         </div>
-
         <div class="team-card">
           <h3>Alexander Bischoff — <span data-i18n="team.bischoff.title">Investor Advisor</span></h3>
           <p data-i18n="team.bischoff.desc">Specializes in advising investors on strategic opportunities and portfolio diversification.</p>
           <a href="mailto:Alexander.Bischoff@lanzvilleinvestment.com" data-i18n="team.contact">Contact</a>
         </div>
-
         <div class="team-card">
           <h3>Jose Miguel Bandeira Machuca — <span data-i18n="team.jose.title">CRO</span></h3>
           <p data-i18n="team.jose.desc">Oversees risk assessment and mitigation strategies to safeguard investments.</p>
@@ -567,6 +592,19 @@
       </div>
     </section>
 
+    <!-- IMPRESSUM -->
+    <section id="impressum" class="section">
+      <h2 data-i18n="impressum.title">Impressum</h2>
+      <div class="impressum-content">
+        <p><strong data-i18n="impressum.company">Company Name</strong>: LANZVILLE INVESTMENTS ANSTALT</p>
+        <p><strong data-i18n="impressum.address">Address</strong>: Heiligkreuz 6, 9490 Vaduz, Liechtenstein</p>
+        <p><strong data-i18n="impressum.register">Commercial Register</strong>: Handelsregister des Fürstentums Liechtenstein, FL-0001.117.487-7</p>
+        <p><strong data-i18n="impressum.contact">Contact</strong>: <a href="mailto:office@lanzvilleinvestment.com">office@lanzvilleinvestment.com</a></p>
+        <p><strong data-i18n="impressum.legal">Legal Representative</strong>: Davor Luksic Lederer (CEO)</p>
+        <p><strong data-i18n="impressum.disclaimer">Disclaimer</strong>: <span data-i18n="impressum.disclaimer.text">The information provided on this website is for general informational purposes only. LANZVILLE INVESTMENTS ANSTALT assumes no liability for the accuracy or completeness of the information provided.</span></p>
+      </div>
+    </section>
+
     <!-- PRIVACY -->
     <section id="privacy" class="section">
       <h2 data-i18n="privacy.title">Privacy Policy</h2>
@@ -579,6 +617,9 @@
   <!-- FOOTER -->
   <footer>
     &copy; 1990–2025 LANZVILLE INVESTMENTS ANSTALT — Vaduz, Liechtenstein
+    <br>
+    <a href="#" data-tab="impressum" data-i18n="nav.impressum">Impressum</a> | 
+    <a href="#" data-tab="privacy" data-i18n="nav.privacy">Privacy</a>
   </footer>
 </div>
 
@@ -651,6 +692,30 @@
     });
   });
 
+  // Footer navigation
+  document.querySelectorAll("footer a").forEach(link => {
+    link.addEventListener("click", e => {
+      e.preventDefault();
+      const tab = link.getAttribute("data-tab");
+      console.log("Footer tab clicked:", tab);
+
+      // Remove active class from all nav links and sections
+      document.querySelectorAll("nav a").forEach(l => l.classList.remove("active"));
+      document.querySelectorAll(".section").forEach(sec => sec.classList.remove("active"));
+
+      // Add active class to corresponding nav link and section
+      const navLink = document.querySelector(`nav a[data-tab="${tab}"]`);
+      if (navLink) navLink.classList.add("active");
+      const section = document.getElementById(tab);
+      if (section) {
+        section.classList.add("active");
+        console.log("Section activated:", tab);
+      } else {
+        console.error("Section not found for tab:", tab);
+      }
+    });
+  });
+
   // Cookie actions
   acceptBtn.addEventListener('click', () => {
     console.log("Cookies accepted");
@@ -692,7 +757,14 @@
   const i18n = {
     en: {
       brand: "LANZVILLE INVESTMENTS ANSTALT",
-      nav: { home: "Home", about: "About Us", team: "Our Team", portfolio: "Portfolio", privacy: "Privacy" },
+      nav: { 
+        home: "Home", 
+        about: "About Us", 
+        team: "Our Team", 
+        portfolio: "Portfolio", 
+        impressum: "Impressum",
+        privacy: "Privacy" 
+      },
       welcome: {
         title: "Welcome to Lanzville Investment",
         text: "We are an investment firm based in Liechtenstein, focused on long-term value creation through private equity, real estate, crypto assets, and bespoke financial strategies. Explore our vision, our people, and our mission."
@@ -724,6 +796,16 @@
         bespoke: { title: "Bespoke Solutions", desc: "Tailored structures for complex financial needs." },
         commodities: { title: "Commodities Trading", desc: "Trading physical gold, diamonds, and other precious commodities, as well as related stocks and financial instruments." }
       },
+      impressum: {
+        title: "Impressum",
+        company: "Company Name",
+        address: "Address",
+        register: "Commercial Register",
+        contact: "Contact",
+        legal: "Legal Representative",
+        disclaimer: "Disclaimer",
+        "disclaimer.text": "The information provided on this website is for general informational purposes only. LANZVILLE INVESTMENTS ANSTALT assumes no liability for the accuracy or completeness of the information provided."
+      },
       privacy: {
         title: "Privacy Policy",
         text: "All information shared with LANZVILLE INVESTMENTS ANSTALT is handled with strict confidentiality. Our practices are GDPR-compliant and ensure your data remains protected."
@@ -742,6 +824,7 @@
         about: "Über das Unternehmen",
         team: "Das Team",
         portfolio: "Anlageportfolio",
+        impressum: "Impressum",
         privacy: "Datenschutz"
       },
       welcome: {
@@ -774,6 +857,16 @@
         crypto: { title: "Krypto-Assets", desc: "Blockchain-basierte Innovationen und digitale Finanzlösungen." },
         bespoke: { title: "Maßgeschneiderte Lösungen", desc: "Maßgeschneiderte Strukturen für komplexe finanzielle Anforderungen." },
         commodities: { title: "Rohstoffhandel", desc: "Handel mit physischem Gold, Diamanten und anderen wertvollen Rohstoffen sowie damit verbundenen Aktien und Finanzinstrumenten." }
+      },
+      impressum: {
+        title: "Impressum",
+        company: "Firmenname",
+        address: "Adresse",
+        register: "Handelsregister",
+        contact: "Kontakt",
+        legal: "Gesetzlicher Vertreter",
+        disclaimer: "Haftungsausschluss",
+        "disclaimer.text": "Die auf dieser Website bereitgestellten Informationen dienen ausschließlich allgemeinen Informationszwecken. LANZVILLE INVESTMENTS ANSTALT übernimmt keine Haftung für die Richtigkeit oder Vollständigkeit der bereitgestellten Informationen."
       },
       privacy: {
         title: "Datenschutz",
